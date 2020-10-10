@@ -1,4 +1,4 @@
-![Admin](https://shareku.net/screencapture-apiq-host-admin-1602340330402.png)
+![Admin](https://shareku.net/admin.png)
 ![Login](https://shareku.net/screencapture-apiq-host-mobile_login-php-1602340283880.png)
 
 ## Tentang OnyetCBT

@@ -34,9 +34,11 @@ Fitur OnyetCBT:
 - [Aplikasi Android - Harap kontak kami](mailto:onyet@shareku.net)
 
 ## Requirement
-PHP Version : PHP 7.x, Rekomendasi PHP 7.4
-Jitsi Server: Optional
-MariaDB Version : 10.x
+
+- PHP Version : PHP 7.x, Rekomendasi PHP 7.4
+- PHP Imagick
+- Jitsi Server: Optional
+- MariaDB Version : 10.x
 
 ## Admin Login
 

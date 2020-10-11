@@ -4,6 +4,7 @@ Hacktoberfest is open to everyone in our global community! Four quality pull req
 
 ### How to Contribute / Cara mengikuti Hacktoberfest atau berkontribusi:
 
+- Register your github account [here](https://hacktoberfest.digitalocean.com/)
 - Fork this Repository (Fork Repositori ini. Ada di pojok kanan atas)
 - Clone your Repository (Clone Repositori kamu yang berasal dari fork repositori ini)
 - Add your name in contributor.md (Tambahkan namamu pada file contributor.md)

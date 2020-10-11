@@ -53,6 +53,30 @@ Jika anda menemui kendala dan lainnya silahkan buat issue dan saya akan segera m
 
 ## Proses Pemasangan
 
+### XAMPP
+
+- Unduh [XAMPP](https://www.apachefriends.org/download.html)
+- Lakukan [pemasangan XAMPP](https://www.wikihow.com/Install-the-Apache-Web-Server-on-a-Windows-PC)
+- Unduh ZIP file atau Clone Repositori ini
+- Masuk pada direktori/ folder XAMPP yang telah terpasang dan letakan semua file dalam repositori ini ke dalam folder ``htdocs``
+- Jalankan XAMPP dan akse alamat XAMPP, biasanya ``http://localhost/_install.php``
+
+### LARAGON
+
+- Unduh [Laragon](https://laragon.org/download/index.html)
+- Pasang atau ekstrak Laragon
+- Unduh ZIP file atau Clone Repositori ini
+- Masuk pada direktori/ folder Laragon yang telah terpasang dan letakan semua file dalam repositori ini ke dalam folder ``www``
+- Jalankan Laragon dan akse alamat Laragon, biasanya ``http://localhost/_install.php``
+
+### Apache Linux Server
+
+- Siapkan semua package yang dibutuhkan : Apache/Apache2, MariaDB/MySQL, PHP 7.X, PHP7.X-FPM, PHP-Imagick dan kebutuhan webserver lainnya.
+- Masuk ke Linux server menggunakan ssh/tls/filezilla
+- Unduh ZIP file atau Clone Repositori ini
+- Masuk pada dan unggah hasil clone repositori ini ke direktori/ folder ``/var/www/html``
+- Mulai ulang / restart Apache/Apache2 dan akses melalui alamat web yang terhubung ke server tersebut.
+
 Akses halaman instalasi atau pemasangan.
 ```bash
 http://yourdomainroot/_install.php

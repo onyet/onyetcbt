@@ -1,3 +1,18 @@
+## Hacktoberfest 2020
+
+Hacktoberfest is open to everyone in our global community! Four quality pull requests must be submitted to public GitHub repositories. You can sign up anytime between October 1 and October 31. [Read more](https://hacktoberfest.digitalocean.com/)
+
+### How to Contribute / Cara mengikuti Hacktoberfest atau berkontribusi:
+
+- Fork this Repository (Fork Repositori ini. Ada di pojok kanan atas)
+- Clone your Repository (Clone Repositori kamu yang berasal dari fork repositori ini)
+- Add your name in contributor.md (Tambahkan namamu pada file contributor.md)
+- Push (Push. bisa gunakan git push atau langung dari github.com)
+- Pull Request (Lakukan pull request ke repositori asli)
+- Done (Selesai)
+
+We'll approve your pull request as soon as we don't run into any problems.
+
 ![Admin](https://shareku.net/admin.png)
 ![Login](https://shareku.net/screencapture-apiq-host-mobile_login-php-1602340283880.png)
 

@@ -295,6 +295,8 @@ $ujian = mysqli_num_rows(mysqli_query($koneksi, "SELECT * FROM ujian where statu
 
 						<li class='treeview'><a href='?pg=registrasi'><i class="fas fa-user-clock side-menu-icon fa-fw   "></i> <span>Registrasi</span></a></li>
 
+						<li class='treeview'><a href='?pg=absensi'><i class="fas fa-spell-check side-menu-icon fa-fw   "></i> <span>Absensi</span></a></li>
+
 						<li class='treeview'><a href='?pg=meeting'><i class='fas fa-video side-menu-icon fa-fw'></i> Tatap Muka</a></li>
 
 						<li class='treeview'>
@@ -314,7 +316,7 @@ $ujian = mysqli_num_rows(mysqli_query($koneksi, "SELECT * FROM ujian where statu
 
 							</ul>
 						</li>
-						<!-- <li><a href='?pg=jadwal'><i class="fas fa-desktop side-menu-icon fa-fw"></i> <span> Status Ujian</span></a></li> -->
+
 						<li class='treeview'>
 							<a href='#'><i class="fas fa-desktop side-menu-icon fa-fw"></i><span> Menu Ujian </span><span class='pull-right-container'> <i class='fa fa-angle-down pull-right'></i> </span></a>
 							<ul class='treeview-menu'>
@@ -323,17 +325,6 @@ $ujian = mysqli_num_rows(mysqli_query($koneksi, "SELECT * FROM ujian where statu
 
 							</ul>
 						</li>
-						<!-- <li class='treeview'>
-							<a href='#'><i class="fas fa-desktop fa-2x fa-fw"></i><span> UBK</span><span class='pull-right-container'> <i class='fa fa-angle-down pull-right'></i> </span></a>
-							<ul class='treeview-menu'> -->
-						<!-- <li><a href='?pg=status'><i class='fas fa-angle-double-right fa-fw'></i> <span> Status Peserta</span></a></li> -->
-						<!-- <li><a href='?pg=reset'><i class='fas fa-angle-double-right fa-fw'></i> <span> Reset Login</span></a></li> -->
-						<!-- <li><a href='?pg=token'><i class='fas fa-angle-double-right fa-fw'></i> <span> Rilis Token</span></a></li> -->
-						<!-- <li><a href='?pg=pengjumlah nil'><i class='fas fa-angle-double-right fa-fw'></i> <span> Pengjumlah nil Soal</span></a></li> -->
-						<!-- <li><a href='?pg=susulan'><i class='fas fa-angle-double-right fa-fw'></i> <span> Belum Ujian</span></a></li>
-								<li><a href='?pg=filemanager'><i class='fas fa-angle-double-right fa-fw'></i> <span> File manager</span></a></li> -->
-						<!-- </ul>
-						</li> -->
 						<li class='treeview'>
 							<a href='#'><i class="fas fa-file-signature side-menu-icon fa-fw"></i><span> Nilai </span><span class='pull-right-container'> <i class='fa fa-angle-down pull-right'></i> </span></a>
 							<ul class='treeview-menu'>
@@ -374,15 +365,7 @@ $ujian = mysqli_num_rows(mysqli_query($koneksi, "SELECT * FROM ujian where statu
 						<li class='treeview'><a href='?pg=meeting'><i class='fas fa-video side-menu-icon fa-fw'></i> Tatap Muka</a></li>
 						<li><a href='?pg=materi'><i class='fas fa-file side-menu-icon fa-fw'></i> <span> Materi</span></a></li>
 						<li><a href='?pg=tugas'><i class="fas side-menu-icon fa-edit fa-fw"></i> <span>Tugas Terstruktur</span></a></li>
-						<!-- <li><a href='?pg=jadwal'><i class="fas fa-business-time   fa-2x fa-fw"></i> <span> Jadwal Ujian</span></a></li>
-						<li class='treeview'>
-							<a href='#'><i class="fas fa-desktop fa-2x fa-fw"></i><span> UBK</span><span class='pull-right-container'> <i class='fa fa-angle-down pull-right'></i> </span></a>
-							<ul class='treeview-menu'>
-								<li><a href='?pg=status'><i class='fas fa-angle-double-right fa-fw'></i> <span> Status Peserta</span></a></li>
-								<li><a href='?pg=reset'><i class='fas fa-angle-double-right fa-fw'></i> <span> Reset Login</span></a></li>
-								<li><a href='?pg=token'><i class='fas fa-angle-double-right fa-fw'></i> <span> Token Ujian</span></a></li>
-							</ul>
-						</li> -->
+						
 						<li class='treeview'>
 							<a href='#'><i class="fas fa-desktop side-menu-icon fa-fw"></i><span> Menu Ujian </span><span class='pull-right-container'> <i class='fa fa-angle-down pull-right'></i> </span></a>
 							<ul class='treeview-menu'>
@@ -1686,6 +1669,8 @@ $ujian = mysqli_num_rows(mysqli_query($koneksi, "SELECT * FROM ujian where statu
 					<?php include 'master_siswa.php'; ?>
 				<?php elseif ($pg == 'registrasi') : ?>
 					<?php include 'register/show.register.php'; ?>
+				<?php elseif ($pg == 'absensi') : ?>
+					<?php include 'absen/tampil.php'; ?>
 				<?php elseif ($pg == 'meeting') : ?>
 					<?php include 'meet/list_meeting.php'; ?>
 				<?php elseif ($pg == 'uplfotosiswa') : ?>

@@ -285,6 +285,27 @@ function size($bytes = 0)
 	return $size . ' ' . $b;
 }
 
+function bulan_indo2($m)
+{
+	$bulan = array(
+		'Januari',
+		'Februari',
+		'Maret',
+		'April',
+		'Mei',
+		'Juni',
+		'Juli',
+		'Agustus',
+		'September',
+		'Oktober',
+		'November',
+		'Desember'
+	);
+	$m = (int)$m;
+	$i = $m - 1;
+	return $bulan[$i];
+}
+
 function bulan_indo($tanggal)
 {
 	$bulan = array(
@@ -334,6 +355,17 @@ function buat_tanggal($format, $time = null)
 	$str = str_replace("Sun", "Minggu", $str);
 	return $str;
 }
+
+function hari_indo2($tgl) {
+	$D = date('D', strtotime($tgl));
+	$D = str_replace(array(
+		'Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'
+	), array(
+		'Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jum\'at', 'Sabtu'
+	), $D);
+	return $D;
+}
+
 function enum($bool)
 {
 	$bool = ($bool == 1) ? 'Ya' : 'Tidak';

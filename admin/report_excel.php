@@ -2,7 +2,7 @@
 require("../config/config.default.php");
 require("../config/config.function.php");
 require("../config/functions.crud.php");
-require("../config/dis.php");
+// require("../config/dis.php");
 $id_pengawas = (isset($_SESSION['id_pengawas'])) ? $_SESSION['id_pengawas'] : 0;
 if($id_pengawas == 0) {
     header('Location:'. $homeurl .'/mobile_login.php');
@@ -129,30 +129,3 @@ Jumlah Soal: <?= $mapel['jml_soal'] ?> PG / <?= $mapel['jml_esai'] ?> ESAI<br />
 	<?php } ?>
 
 </table>
-
-<!-- <br>
-<table border='1'>
-	<tr>
-		<th>No.</th>
-		<th>Soal</th>
-		<th>Menjawab Benar</th>
-		<th>Menjawab Salah</th>
-		<th>Kategori</th>
-	</tr>
-	<?php
-
-	$soalq = mysqli_query($koneksi, "SELECT * FROM soal a join mapel b ON a.id_mapel=b.id_mapel  ORDER BY nomor ASC");
-
-	while ($soal = mysqli_fetch_array($soalq)) {
-		$no++;
-		$nomor = $soal['nomor'];
-	?>
-		<tr>
-			<td><?= $soal['nomor'] ?></td>
-			<td><?= $soal['soal'] ?></td>
-			
-		</tr>
-
-	<?php } ?>
-
-</table> -->

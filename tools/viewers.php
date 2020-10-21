@@ -6,7 +6,8 @@ if (!isset($_SESSION['id_pengawas']) && !isset($_SESSION['id_siswa']) && !isset(
     exit();
 }
 
-$path = urldecode($_GET['file']);
+$path = (isset($_GET['file']) ? $_GET['file'] : dekripsi($ac));
+$path = urldecode($path);
 $temp = explode('.', $path);
 $urls = '';
 $exts = trim(strtolower(end($temp)));

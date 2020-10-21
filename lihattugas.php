@@ -42,9 +42,19 @@ $mapel = mysqli_fetch_array(mysqli_query($koneksi, "select * from mata_pelajaran
                     <div class="tab-content">
                         <div class="tab-pane active" id="tab_1">
                             <?php if ($tugas['file'] <> null) { ?>
-                                Download Materi Pendukung<p>
-                                    <a target="_blank" href='<?= $homeurl ?>/berkas/<?= $tugas['file'] ?>' class="btn btn-primary"><?= $tugas['file'] ?></a>
-                                <?php } ?>
+                                Download File Pendukung<p>
+                                    
+                                    <?php  if(isset($_SESSION['is_mobile'])) { ?>
+
+                                    <a target="_blank" href="#" onclick="copyToClipboard('<?= $homeurl ?>/berkas/<?= $tugas['file'] ?>')" class="btn btn-primary">Copy Link Download</a>
+                                    <a href="<?= $homeurl ?>/viewer/<?= enkripsi(urlencode($homeurl .'/berkas/'. $tugas['file'])) ?>" class="btn btn-success">Lihat File Sekarang</a>
+                                    
+                                    <?php } else { ?>
+
+                                        <a target="_blank" href='<?= $homeurl ?>/berkas/<?= $tugas['file'] ?>' class="btn btn-primary">Unduh File Pendukung</a>
+                                    
+                                    <?php } ?>
+                            <?php } ?>
                                 <center>
                                     <h3><?= $tugas['judul'] ?></h3>
                                 </center>
@@ -84,7 +94,7 @@ $mapel = mysqli_fetch_array(mysqli_query($koneksi, "select * from mata_pelajaran
                                         <div class="alert alert-success" role="alert">
                                             <strong>file jawaban berhasil dikirim</strong>
                                             <?php  if(isset($_SESSION['is_mobile'])) { ?>
-                                                <a href='<?= $homeurl ?>/viewer?file=<?= urlencode($homeurl .'/tugas/'. $jawab_tugas['file']) ?>'>Lihat file</a>
+                                                <a href='<?= $homeurl ?>/viewer/<?= enkripsi(urlencode($homeurl .'/tugas/'. $jawab_tugas['file'])) ?>'>Lihat file</a>
                                             <?php } else { ?>
                                                 <a href="<?= $homeurl ?>/tugas/<?= $jawab_tugas['file'] ?>">Lihat</a>
                                             <?php } ?>
@@ -146,6 +156,18 @@ $mapel = mysqli_fetch_array(mysqli_query($koneksi, "select * from mata_pelajaran
 </script>
 <script>
     $(document).ready(function() {
+        
+        function copyToClipboard(text) {
+            const listener = function(ev) {
+            ev.preventDefault();
+            ev.clipboardData.setData('text/plain', text);
+            };
+            document.addEventListener('copy', listener);
+            document.execCommand('copy');
+            document.removeEventListener('copy', listener);
+            alert('Berhasil copy url download file. Silahkan paste pada browser!');
+        }
+
         $('#txtjawaban').summernote({
             minHeight: 300,
             callbacks: {

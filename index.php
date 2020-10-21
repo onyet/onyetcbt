@@ -981,6 +981,17 @@ $tglsekarang = time();
                     });
             });
         }
+        
+		function copyToClipboard(text) {
+			const listener = function(ev) {
+			ev.preventDefault();
+			ev.clipboardData.setData('text/plain', text);
+			};
+			document.addEventListener('copy', listener);
+			document.execCommand('copy');
+			document.removeEventListener('copy', listener);
+			alert('Berhasil copy url download file. Silahkan paste pada browser!');
+		}
     </script>
     <?php if ($pg == 'testongoing') : ?>
         <script>

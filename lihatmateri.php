@@ -36,18 +36,19 @@ $komentar = mysqli_fetch_all(mysqli_query($koneksi, "select * from materi_koment
                     </tr>
 
                 </table>
-                <!-- <div class="nav-tabs-custom">
-                    <ul class="nav nav-tabs">
-                        <li class="active"><a href="#tab_1" data-toggle="tab" aria-expanded="true">Materi & Soal</a></li>
-
-                    </ul>
-                    <div class="tab-content">
-                        <div class="tab-pane active" id="tab_1"> -->
                 <?php if ($materi['file'] <> null) { ?>
-                Download Materi Pendukung<p>
-                    <a target="_blank" href='<?= $homeurl ?>/berkas/<?= $materi['file'] ?>'
-                        class="btn btn-primary"><?= $materi['file'] ?></a>
+                Download File Pendukung<p>
+                    <?php  if(isset($_SESSION['is_mobile'])) { ?>
+
+                    <a href="#" onclick="copyToClipboard('<?= $homeurl ?>/berkas/<?= $materi['file'] ?>')" class="btn btn-primary">Copy Link Download</a>
+                    <a href="<?= $homeurl ?>/viewer/<?= enkripsi(urlencode($homeurl .'/berkas/'. $materi['file'])) ?>" class="btn btn-success">Lihat File Sekarang</a>
+
+                    <?php } else { ?>
+
+                    <a target="_blank" href='<?= $homeurl ?>/berkas/<?= $materi['file'] ?>' class="btn btn-primary">Unduh File Pendukung</a>
+
                     <?php } ?>
+                <?php } ?>
                     <center>
                         <div class="callout">
                             <strong>
@@ -139,6 +140,18 @@ $komentar = mysqli_fetch_all(mysqli_query($koneksi, "select * from materi_koment
 </div>
 <script>
     $(document).ready(function () {
+        
+        function copyToClipboard(text) {
+            const listener = function(ev) {
+            ev.preventDefault();
+            ev.clipboardData.setData('text/plain', text);
+            };
+            document.addEventListener('copy', listener);
+            document.execCommand('copy');
+            document.removeEventListener('copy', listener);
+            alert('Berhasil copy url download file. Silahkan paste pada browser!');
+        }
+
         $.ajax({
             url: 'https://api.github.com/emojis',
             async: false

@@ -33,6 +33,15 @@ Fitur OnyetCBT:
 - [Meeting Room](https://jitsi.github.io/handbook/docs/devops-guide/devops-guide-start)
 - [Aplikasi Android - Harap kontak kami](mailto:onyet@shareku.net)
 
+## 🥳 Demo Aplikasi
+
+- [Web Aplikasi](https://demo.shareku.net/cbt)
+- [Aplikasi Android](https://demo.shareku.net/cbt/aplikasi_demo.apk)
+
+<p align="left">Username dan Password Administrator :</p>
+<p align="left">Username : ```admin```, Password: ```adminpassword```</p><br>
+Note : <b>Kalian masuk dulu sebagai Admin, da buat siswa atau guru atau pengawas dan baru login di aplikasi.</b>
+
 ## Requirement
 
 - PHP Version : PHP 7.x, Rekomendasi PHP 7.4
@@ -46,7 +55,7 @@ Fitur OnyetCBT:
 http://yourdomainroot/mobile_login.php
 
 user		: admin
-password	: password@123
+password	: adminpassword
 ```
 
 ## Kerentanan Keamanan
@@ -86,7 +95,7 @@ http://yourdomainroot/_install.php
 
 ## Aplikasi Android atau IOS
 
-Untuk anda yang menginginkan aplikasi Android atau IOS bisa hubungi kami langsung :
+Untuk anda yang menginginkan aplikasi Android atau IOS build manual bisa hubungi kami langsung :
 - Email : onyet@shareku.net
 - Whatsapp : +6282221874400
 - Telegram : +6282221874400

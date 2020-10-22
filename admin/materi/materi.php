@@ -68,8 +68,8 @@
                                                     <label>Tanggal Publish</label>
                                                     <input type='text' name='tgl_mulai' class='tgl form-control' autocomplete='off' required='true' />
                                                 </div>
-                                                <div class='col-md-4'>
-                                                    <label>Link Youtube</label>
+                                                <div class='col-md-4' style="display: none;">
+                                                    <label>Video Youtube</label>
                                                     <input type='text' name='youtube' class='form-control' autocomplete='off' />
                                                 </div>
 
@@ -212,7 +212,7 @@
                                                                     <label>Tanggal Publish</label>
                                                                     <input type='text' name='tgl_mulai' class='tgl form-control' autocomplete='off' required='true' value="<?= $materi['tgl_mulai'] ?>" />
                                                                 </div>
-                                                                <div class='col-md-4'>
+                                                                <div class='col-md-4' style="display: none;">
                                                                     <label>Video Youtube</label>
                                                                     <input type='text' name='youtube' class='form-control' autocomplete='off' value="<?= $materi['youtube'] ?>" />
                                                                 </div>

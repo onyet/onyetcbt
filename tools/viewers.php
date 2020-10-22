@@ -14,17 +14,14 @@ $exts = trim(strtolower(end($temp)));
 
 switch ($exts) {
     case ($exts == 'jpg' || $exts == 'png' || $exts == 'jpeg' || $exts == 'gif' || $exts == 'apng' || $exts == 'bmp' || $exts == 'svg' || $exts == 'tiff'):
-        echo 'a';
         $urls = $homeurl .'/tools/img.php?file='. urlencode($path);
         break;
 
     case 'pdf':
-        echo 'b';
         $urls = $homeurl .'/tools/pdf.php?file='. urlencode($path);
         break;
 
-    case ($exts == 'doc' || $exts == 'docx' || $exts == 'ppt' || $exts == 'xls' || $exts == 'xlsx' || $exts == 'pptx'):
-        echo 'c';
+    case ($exts == 'doc' || $exts == 'docx' || $exts == 'ppt' || $exts == 'xls' || $exts == 'xlsx' || $exts == 'pptx' || $exts == 'ppt'):
         $urls = 'https://view.officeapps.live.com/op/embed.aspx?src='. urlencode($path);
         break;
 }

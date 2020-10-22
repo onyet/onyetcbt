@@ -1127,7 +1127,6 @@ $ujian = mysqli_num_rows(mysqli_query($koneksi, "SELECT * FROM ujian where statu
 								minHeight: 300,
 								callbacks: {
 									onImageUpload: function(files) {
-										$('.loader').show();
 										data = new FormData();
 										data.append("file", files[0]);
 										data.append("api_key", "<?= KEY ?>");
@@ -1146,7 +1145,6 @@ $ujian = mysqli_num_rows(mysqli_query($koneksi, "SELECT * FROM ujian where statu
 													} else {
 														toastr.error(a.message);
 													}
-													$('.loader').hide();
 											}
 										});
 									}
@@ -3672,7 +3670,6 @@ $ujian = mysqli_num_rows(mysqli_query($koneksi, "SELECT * FROM ujian where statu
 				minHeight: 300,
 				callbacks: {
 					onImageUpload: function(files) {
-						$('.loader').show();
 						data = new FormData();
 						data.append("file", files[0]);
 						data.append("api_key", "<?= KEY ?>");
@@ -3700,7 +3697,6 @@ $ujian = mysqli_num_rows(mysqli_query($koneksi, "SELECT * FROM ujian where statu
 									} else {
 										toastr.error(a.message);
 									}
-									$('.loader').hide();
 							}
 						});
 					}

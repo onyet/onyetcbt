@@ -172,7 +172,6 @@ $mapel = mysqli_fetch_array(mysqli_query($koneksi, "select * from mata_pelajaran
             minHeight: 300,
             callbacks: {
                 onImageUpload: function(files) {
-                    $('.loader').show();
                     data = new FormData();
                     data.append("file", files[0]);
                     data.append("api_key", "<?= KEY ?>");
@@ -184,14 +183,13 @@ $mapel = mysqli_fetch_array(mysqli_query($koneksi, "select * from mata_pelajaran
                         contentType: false,
                         processData: false,
                         success: function(url) {
-                                var a = JSON.parse(url);
-                                if (a.status != 'error') {
-                                    toastr.success(a.message);
-                                    $('#txtjawaban').summernote('insertImage', a.data);
-                                } else {
-                                    toastr.error(a.message);
-                                }
-                                $('.loader').hide();
+                            var a = JSON.parse(url);
+                            if (a.status != 'error') {
+                                toastr.success(a.message);
+                                $('#txtjawaban').summernote('insertImage', a.data);
+                            } else {
+                                toastr.error(a.message);
+                            }
                         }
                     });
                 }

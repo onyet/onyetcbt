@@ -360,6 +360,7 @@ $ujian = mysqli_num_rows(mysqli_query($koneksi, "SELECT * FROM ujian where statu
 					<?php endif ?>
 					<?php if ($pengawas['level'] == 'guru') : ?>
 						<li class='treeview'><a href='?pg=siswa'><i class="fas side-menu-icon fa-user-friends fa-lg fa-fw"></i> <span>Peserta Ujian</span></a></li>
+						<li class='treeview'><a href='?pg=absensi'><i class="fas fa-spell-check side-menu-icon fa-fw   "></i> <span>Absensi</span></a></li>
 						<li><a href='?pg=editguru'><i class="fas side-menu-icon fa-users-cog fa-fw"></i> <span>Profil Saya</span></a></li>
 						<li><a href='?pg=banksoal'><i class="fas side-menu-icon fa-envelope-open-text fa-fw"></i> <span>Bank Soal</span></a></li>
 						<li class='treeview'><a href='?pg=meeting'><i class='fas fa-video side-menu-icon fa-fw'></i> Tatap Muka</a></li>

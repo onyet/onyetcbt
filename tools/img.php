@@ -5,7 +5,7 @@
         exit();
     }
 
-    $file = $_GET['file'];
+    $file = urldecode($_GET['file']);
 ?>
 <!DOCTYPE html>
 <html lang="en">

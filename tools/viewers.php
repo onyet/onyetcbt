@@ -18,7 +18,7 @@ switch ($exts) {
         break;
 
     case 'pdf':
-        $urls = $homeurl .'/tools/pdf.php?file='. urlencode($path);
+        $urls = $homeurl .'/tools/pdf.php?file='. $path;
         break;
 
     case ($exts == 'doc' || $exts == 'docx' || $exts == 'ppt' || $exts == 'xls' || $exts == 'xlsx' || $exts == 'pptx' || $exts == 'ppt'):

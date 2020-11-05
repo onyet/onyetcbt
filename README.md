@@ -76,7 +76,7 @@ http://yourdomainroot/_install.php
 ## 📲 Aplikasi Android atau IOS
 
 Untuk anda yang menginginkan aplikasi Android atau IOS build manual bisa hubungi kami langsung :
-- Email : onyet@shareku.net
+- Email : onyetcorp@gmail.com
 - Whatsapp : +6282221874400
 - Telegram : +6282221874400
 

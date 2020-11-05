@@ -1,3 +1,4 @@
-github: onyet
+#github: onyet
 open_collective: onyetapp
-#custom: ["https://www.paypal.me/onyetcorp", “https://saweria.co/onyet”]
+custom: "https://www.paypal.me/onyetcorp"
+custom: “https://saweria.co/onyet”

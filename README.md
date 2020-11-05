@@ -1,19 +1,3 @@
-## Hacktoberfest 2020
-
-Hacktoberfest is open to everyone in our global community! Four quality pull requests must be submitted to public GitHub repositories. You can sign up anytime between October 1 and October 31. [Read more](https://hacktoberfest.digitalocean.com/)
-
-### How to Contribute / Cara mengikuti Hacktoberfest atau berkontribusi:
-
-- Register your github account [here](https://hacktoberfest.digitalocean.com/)
-- Fork this Repository (Fork Repositori ini. Ada di pojok kanan atas)
-- Clone your Repository (Clone Repositori kamu yang berasal dari fork repositori ini)
-- Add your name in contributor.md (Tambahkan namamu pada file contributor.md)
-- Push (Push. bisa gunakan git push atau langung dari github.com)
-- Pull Request (Lakukan pull request ke repositori asli)
-- Done (Selesai)
-
-We'll approve your pull request as soon as we don't run into any problems.
-
 ![Admin](https://shareku.net/admin.png)
 ![Login](https://shareku.net/screencapture-apiq-host-mobile_login-php-1602340283880.png)
 
@@ -104,6 +88,14 @@ Pada vesi android ada beberapa fitur tambahan seperti :
 - Melihat Dokumen MS.office, PDF, Gambar secara langsung
 - Mencegah perekaman atau penangkapan layar
 
+## Kerentanan Aplikasi
+
+Jika anda mendapati bahwa aplikasi ini memeiliki kerentanan keamanan atau ada fungsi yang tidak berkerja dengan optimal maka anda bisa membuat issue pada repositori ini.
+
+## Donasi
+
+Silahkan cek halaman github kami [disini.](https://github.com/onyet)
+
 ## Kontribusi
 
 Semua kontribusi perbaikan atau ide yang anda ingin tuangkan atau kembangkan silahkan lakukan pullrequest.
@@ -111,3 +103,4 @@ Semua kontribusi perbaikan atau ide yang anda ingin tuangkan atau kembangkan sil
 ## Lisensi
 
 OnyetCBT adalah perangkat lunak bersumber terbuka yang dilisensikan di bawah [Lisensi MIT](https://opensource.org/licenses/MIT).
+<b>Kami harap jangan menghilangkan tulisan OCBT pada config.ocbt.php dan copyright = Onyet App.</b>

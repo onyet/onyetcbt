@@ -1,9 +1,10 @@
 <?php
 //konfigurasi server database
 $host = 'localhost';
-$user = 'root';
-$pass = '';
-$debe = 'ecandy28r3';
+$user = 'dmw';
+$pass = 'unjunk@123';
+$debe = 'ocbt';
+
 
 $koneksi = mysqli_connect($host, $user, $pass, "");
 if ($koneksi) {

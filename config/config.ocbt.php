@@ -1,6 +1,6 @@
 <?php
 $copyright = 'Onyet App';
-$serverurl = 'https://shareku.net/';
+$serverurl = 'https://apiq.host/';
 
 define("VERSI", "3.0");
 define("REVISI", "2");

@@ -1,57 +1,102 @@
-<p align="center"><img src="https://apk.cbtcandy.com/dist/img/logo.png" width="200"></p>
+![Admin](https://shareku.net/admin.png)
+![Login](https://shareku.net/screencapture-apiq-host-mobile_login-php-1602340283880.png)
 
+## 🎊 Tentang OnyetCBT
 
-## Tentang CandyCBT
+OnyetCBT adalah Aplikasi opensource yang diperuntukan untuk instansi seperti sekolah, madrasah, ataupun yang lain, OnyetCBT ini biasa digunakan untuk PTS/PAS/USBN/SIMULASI UNBK. Aplikasi ini bersumber dari [CandyCBT](https://cbtcandy.com) yang dikembangkan kembali guna keperluan lebih lanjut. Aplikasi ini masih bersifat Open Source dengan lisensi MIT atau harap jangan menghilangkan nama yang sudah berkontribusi dalam pembuatan dan pengembangan aplikasi ini.
 
-CandyCBT adalah aplikasi opensource yang diperuntukan untuk instansi seperti sekolah, madrasah, ataupun yang lain, CandyCBT ini biasa digunakan untuk PTS/PAS/USBN/SIMULASI UNBK
+Fitur OnyetCBT:
 
-Fitur CandyCBT:
+- [Responsive - Bootstrap 3](https://getbootstrap.com/docs/3.3).
+- [Pengelolaan Mudah](https://shareku.net).
+- [3 Jenjang Pendidikan](https://shareku.net).
+- [Role : Admin, Guru, Pengawas, Proktor, Siswa](https://shareku.net).
+- [Pengumuman](https://shareku.net)
+- [E-Learning, Tugas dan Komentar](https://shareku.net)
+- [Absen Harian](https://shareku.net)
+- [Meeting Room](https://jitsi.github.io/handbook/docs/devops-guide/devops-guide-start)
+- [Aplikasi Android - Harap kontak kami](mailto:onyet@shareku.net)
 
-- [Responsive - Bootstrap 3](https://apk.cbtcandy.com).
-- [Pengelolaan Mudah](https://apk.cbtcandy.com).
-- [3 Jenjang Pendidikan](https://apk.cbtcandy.com).
-- [Role : Admin, Guru, Pengawas](https://apk.cbtcandy.com).
-- [Role : Siswa](https://apk.cbtcandy.com).
+## 🥳 Demo Aplikasi
 
-## Requirement
-PHP Version : PHP 7.x, Recommended PHP 7.4
+- [Web Aplikasi](https://demo.shareku.net/cbt)
+- [Aplikasi Android](https://demo.shareku.net/cbt/aplikasi_demo.apk)
 
-MariaDB Version : 10.x
+<p align="left">Username dan Password Administrator :</p>
+<p align="left">Username : admin, Password: adminpassword</p><br>
+Note : <b>Kalian masuk dulu sebagai Admin, da buat siswa atau guru atau pengawas dan baru login di aplikasi.</b>
 
-## Admin Login
+## 🛠 Requirement
+
+- PHP Version : PHP 7.x, Rekomendasi PHP 7.4
+- PHP Imagick
+- Jitsi Server: Optional
+- MariaDB Version : 10.x
+
+## 🎭 Admin Login
 
 ```bash
-http://yourdomain/yourpath/admin/
+http://yourdomainroot/mobile_login.php
 
 user		: admin
-password	: usbk2020
+password	: adminpassword
 ```
 
-## Kerentanan Keamanan
+## 🧬 Proses Pemasangan
 
-Jika anda menemukan kerentanan silahkan kirimkan ke [@nashaarumi](https://t.me/nashaarumi). Semua kerentanan keamanan akan segera ditangani.
+### XAMPP
 
-## Donasi Pengembangan
+- Unduh [XAMPP](https://www.apachefriends.org/download.html)
+- Lakukan [pemasangan XAMPP](https://www.wikihow.com/Install-the-Apache-Web-Server-on-a-Windows-PC)
+- Unduh ZIP file atau Clone Repositori ini
+- Masuk pada direktori/ folder XAMPP yang telah terpasang dan letakan semua file dalam repositori ini ke dalam folder ``htdocs``
+- Jalankan XAMPP dan akse alamat XAMPP, biasanya ``http://localhost/_install.php``
 
-Dukung kami dengan cara donasi ke Rekening dibawah ini, donasi anda sangat bermanfaat untuk pengembangan kami selanjutnya
+### LARAGON
 
-Owner (Pajar Sidik N)
+- Unduh [Laragon](https://laragon.org/download/index.html)
+- Pasang atau ekstrak Laragon
+- Unduh ZIP file atau Clone Repositori ini
+- Masuk pada direktori/ folder Laragon yang telah terpasang dan letakan semua file dalam repositori ini ke dalam folder ``www``
+- Jalankan Laragon dan akse alamat Laragon, biasanya ``http://localhost/_install.php``
+
+### Apache Linux Server
+
+- Siapkan semua package yang dibutuhkan : Apache/Apache2, MariaDB/MySQL, PHP 7.X, PHP7.X-FPM, PHP-Imagick dan kebutuhan webserver lainnya.
+- Masuk ke Linux server menggunakan ssh/tls/filezilla
+- Unduh ZIP file atau Clone Repositori ini
+- Masuk pada dan unggah hasil clone repositori ini ke direktori/ folder ``/var/www/html``
+- Mulai ulang / restart Apache/Apache2 dan akses melalui alamat web yang terhubung ke server tersebut.
+
+Akses halaman instalasi atau pemasangan.
 ```bash
-BNI : 0318610166
+http://yourdomainroot/_install.php
 ```
 
-Pengguna (Shinau Lee Been Vinter)
+## 📲 Aplikasi Android atau IOS
 
-DANA : [Sri Hastuti](https://link.dana.id/minta/2miwb92pk58).
-```bash
-Briva BRI : 8881 0 0857 1868 3442
+Untuk anda yang menginginkan aplikasi Android atau IOS build manual bisa hubungi kami langsung :
+- Email : onyetcorp@gmail.com
+- Whatsapp : +6282221874400
+- Telegram : +6282221874400
 
-Briva BCA : 3901 0857 1868 3442
-```
+Pada vesi android ada beberapa fitur tambahan seperti :
+- Melihat Dokumen MS.office, PDF, Gambar secara langsung
+- Mencegah perekaman atau penangkapan layar
 
-## Contact
-https://t.me/bkprogrammer (Shinau Lee Been Vinter)
+## 🧨 Kerentanan Aplikasi
 
-## Lisensi
+Jika anda mendapati bahwa aplikasi ini memeiliki kerentanan keamanan atau ada fungsi yang tidak berkerja dengan optimal maka anda bisa membuat issue pada repositori ini.
 
-CandyCBT adalah perangkat lunak bersumber terbuka yang dilisensikan di bawah [Lisensi MIT](https://opensource.org/licenses/MIT).
+## 👑 Donasi
+
+Silahkan cek halaman github kami [disini.](https://github.com/onyet)
+
+## 🎁 Kontribusi
+
+Semua kontribusi perbaikan atau ide yang anda ingin tuangkan atau kembangkan silahkan lakukan pullrequest.
+
+## 👔 Lisensi
+
+OnyetCBT adalah perangkat lunak bersumber terbuka yang dilisensikan di bawah [Lisensi MIT](https://opensource.org/licenses/MIT).
+<b>Kami harap jangan menghilangkan tulisan OCBT pada config.ocbt.php dan copyright = Onyet App.</b>

@@ -5,9 +5,9 @@ $iduser = (isset($_GET['user'])) ? $_GET['user'] : NULL;
 if ($iduser !== NULL && $_GET['api_key'] == KEY) {
 
     $iduser = base64_decode($iduser);
-    $iduser = explode(';', $iduser);
-    $iduser = $iduser[0];
-    $level  = end($iduser);
+    $idusers= explode(';', $iduser);
+    $iduser = $idusers[0];
+    $level  = end($idusers);
     $user   = ($level != 'siswa') ? mysqli_fetch_array(mysqli_query($koneksi, "SELECT * FROM pengawas WHERE id_pengawas=". $iduser)) : mysqli_fetch_array(mysqli_query($koneksi, "SELECT * FROM siswa WHERE id_siswa=". $iduser));
 
     if (!isset($user) || count($user) <= 0) {

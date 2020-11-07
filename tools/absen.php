@@ -6,8 +6,8 @@ if ($iduser !== NULL && $_GET['api_key'] == KEY) {
 
     $iduser = base64_decode($iduser);
     $iduser = explode(';', $iduser);
-    $level  = end($iduser);
     $iduser = $iduser[0];
+    $level  = end($iduser);
     $user   = ($level != 'siswa') ? mysqli_fetch_array(mysqli_query($koneksi, "SELECT * FROM pengawas WHERE id_pengawas=". $iduser)) : mysqli_fetch_array(mysqli_query($koneksi, "SELECT * FROM siswa WHERE id_siswa=". $iduser));
 
     if (!isset($user) || count($user) <= 0) {
@@ -31,7 +31,7 @@ if ($iduser !== NULL && $_GET['api_key'] == KEY) {
         case 'absen':
             
             $tgl    = date('Y-m-d', time());
-            $exec   = mysqli_num_rows(mysqli_query($koneksi, "SELECT * FROM absen_harian WHERE id_user=". $iduser ." AND hadir='". $tgl ."';"));
+            $exec   = mysqli_num_rows(mysqli_query($koneksi, "SELECT * FROM absen_harian WHERE id_user=". $iduser ." AND level='". $level ."' AND hadir='". $tgl ."';"));
 
             if ($exec > 0) {
                 
@@ -71,7 +71,7 @@ if ($iduser !== NULL && $_GET['api_key'] == KEY) {
         default:
             
             $tgl    = date('Y-m-d', time());
-            $exec   = mysqli_num_rows(mysqli_query($koneksi, "SELECT * FROM absen_harian WHERE id_user=". $iduser ." AND hadir='". $tgl ."';"));
+            $exec   = mysqli_num_rows(mysqli_query($koneksi, "SELECT * FROM absen_harian WHERE id_user=". $iduser ." AND level='". $level ."' AND hadir='". $tgl ."';"));
             
             if ($exec > 0) {
                 

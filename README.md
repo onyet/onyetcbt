@@ -1,4 +1,3 @@
-![Admin](https://shareku.net/admin.png)
 ![Login](https://shareku.net/screencapture-apiq-host-mobile_login-php-1602340283880.png)
 
 ## 🎊 Tentang OnyetCBT
@@ -16,15 +15,6 @@ Fitur OnyetCBT:
 - [Absen Harian](https://shareku.net)
 - [Meeting Room](https://jitsi.github.io/handbook/docs/devops-guide/devops-guide-start)
 - [Aplikasi Android - Harap kontak kami](mailto:onyet@shareku.net)
-
-## 🥳 Demo Aplikasi
-
-- [Web Aplikasi](https://demo.shareku.net/cbt)
-- [Aplikasi Android](https://demo.shareku.net/cbt/aplikasi_demo.apk)
-
-<p align="left">Username dan Password Administrator :</p>
-<p align="left">Username : admin, Password: adminpassword</p><br>
-Note : <b>Kalian masuk dulu sebagai Admin, da buat siswa atau guru atau pengawas dan baru login di aplikasi.</b>
 
 ## 🛠 Requirement
 

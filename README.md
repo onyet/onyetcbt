@@ -1,5 +1,8 @@
 ![Login](https://shareku.net/screencapture-apiq-host-mobile_login-php-1602340283880.png)
 
+# 📌 Deprecated
+Onyet CBT with native PHP 7.X is deprecated. Furthermore, the Onyet CBT version is being developed in Codeigniter 4.x and Laravel versions, possibly in the future it will be developed using Pyhton (Django). Thank you for your cooperation and assistance so far.
+
 ## 🎊 Tentang OnyetCBT
 
 OnyetCBT adalah Aplikasi opensource yang diperuntukan untuk instansi seperti sekolah, madrasah, ataupun yang lain, OnyetCBT ini biasa digunakan untuk PTS/PAS/USBN/SIMULASI UNBK. Aplikasi ini bersumber dari [CandyCBT](https://cbtcandy.com) yang dikembangkan kembali guna keperluan lebih lanjut. Aplikasi ini masih bersifat Open Source dengan lisensi MIT atau harap jangan menghilangkan nama yang sudah berkontribusi dalam pembuatan dan pengembangan aplikasi ini.

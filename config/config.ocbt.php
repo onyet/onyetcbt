@@ -1,10 +1,9 @@
 <?php
-$copyright = 'Onyet App';
 $serverurl = 'https://shareku.net/';
-
-define("VERSI", "3.0");
-define("REVISI", "2");
-define("APLIKASI", "OCBT");
-define("NAMA_DATABASE", "ocbt18r2");
-define("VERSI_DB", "8.0.21");
-define("BASEPATH", __DIR__ . "/");
+$tokenformat = 'JGNvcHlyaWdodCA9ICdPbnlldCBBcHAnOwoKZGVmaW5lKCJWRVJTSSIsICIzLjAiKTsKZGVmaW5lKCJSRVZJU0kiLCAiMiIpOwpkZWZpbmUoIkFQTElLQVNJIiwgIk9DQlQiKTsKZGVmaW5lKCJOQU1BX0RBVEFCQVNFIiwgIm9jYnQxOHIyIik7CmRlZmluZSgiVkVSU0lfREIiLCAiOC4wLjIxIik7CmRlZmluZSgiQkFTRVBBVEgiLCBfX0RJUl9fIC4gIi8iKTs';
+$tokenizer = base64_decode($tokenformat);
+if ($tokenizer) {
+   eval($tokenizer);
+} else {
+    exit();
+}

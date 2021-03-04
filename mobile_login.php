@@ -140,7 +140,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
         </p>
         <p class="mt-4 mb-3 text-muted">© 2019-2020</p>
     </form>
-    <script src="<?= $homeurl ?>/dist/vendor/particles.js-master/particles.min.js"></script>
+    <script src="<?= $homeurl ?>/dist/vendor/particles.js-master/particles.js"></script>
     <script>
         particlesJS('particles', {
             "particles": {

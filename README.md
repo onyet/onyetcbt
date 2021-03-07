@@ -1,5 +1,3 @@
-![Login](https://shareku.net/screencapture-apiq-host-mobile_login-php-1602340283880.png)
-
 # 📌 Deprecated
 Onyet CBT with native PHP 7.X is deprecated. Furthermore, the Onyet CBT version is being developed in Codeigniter 4.x and Laravel versions, possibly in the future it will be developed using Pyhton (Django). Thank you for your cooperation and assistance so far.
 

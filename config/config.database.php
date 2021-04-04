@@ -3,7 +3,7 @@
 $host = 'localhost';
 $user = 'root';
 $pass = '';
-$debe = 'ocbt';
+$debe = 'db_ocbt_github';
 
 
 $koneksi = mysqli_connect($host, $user, $pass, "");

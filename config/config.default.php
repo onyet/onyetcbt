@@ -23,7 +23,7 @@ error_reporting(0);
 $uri = $_SERVER['REQUEST_URI'];
 $pageurl = explode("/",$uri);
 
-$homeurl = "https://".$_SERVER['HTTP_HOST'];
+$homeurl = "http://".$_SERVER['HTTP_HOST'];
 (isset($pageurl[1])) ? $pg = $pageurl[1] : $pg = '';
 (isset($pageurl[2])) ? $ac = $pageurl[2] : $ac = '';
 (isset($pageurl[3])) ? $id = $pageurl[3] : $id = 0;

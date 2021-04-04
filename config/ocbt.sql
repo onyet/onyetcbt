@@ -7,6 +7,7 @@ SET sql_mode = 'NO_AUTO_VALUE_ON_ZERO';
 
 SET NAMES utf8mb4;
 
+DROP TABLE IF EXISTS `absen_harian`;
 CREATE TABLE `absen_harian` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_user` int(11) NOT NULL,
@@ -17,22 +18,18 @@ CREATE TABLE `absen_harian` (
   `bulan` tinyint(4) DEFAULT NULL,
   `hari` tinyint(4) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3627 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=48286 DEFAULT CHARSET=utf8mb4;
 
 
+DROP TABLE IF EXISTS `agama`;
 CREATE TABLE `agama` (
   `agamaku` varchar(25) CHARACTER SET latin1 DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-INSERT INTO `agama` (`agamaku`) VALUES
-('Islam'),
-('Kristen Katolik'),
-('Kristen Protestan'),
-('Hindu'),
-('Buddha'),
-('Kong Hu Cu'),
-('Kristen');
+INSERT INTO `agama` (`agamaku`) VALUES ('Islam'), ('Kristen Katolik'), ('Kristen Protestan'), ('Hindu'), ('Buddha'), ('Kong Hu Cu'), ('Kristen');
 
+
+DROP TABLE IF EXISTS `berita`;
 CREATE TABLE `berita` (
   `id_berita` int(11) NOT NULL AUTO_INCREMENT,
   `id_mapel` int(11) NOT NULL,
@@ -51,18 +48,20 @@ CREATE TABLE `berita` (
   `catatan` text DEFAULT NULL,
   `tgl_ujian` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`id_berita`)
-) ENGINE=InnoDB AUTO_INCREMENT=95 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=243 DEFAULT CHARSET=latin1;
 
 
+DROP TABLE IF EXISTS `file_pendukung`;
 CREATE TABLE `file_pendukung` (
   `id_file` int(11) NOT NULL AUTO_INCREMENT,
   `id_mapel` int(11) DEFAULT 0,
   `nama_file` varchar(50) DEFAULT NULL,
   `status_file` int(11) DEFAULT NULL,
   PRIMARY KEY (`id_file`)
-) ENGINE=InnoDB AUTO_INCREMENT=255 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=327 DEFAULT CHARSET=utf8;
 
 
+DROP TABLE IF EXISTS `jawaban`;
 CREATE TABLE `jawaban` (
   `id_jawaban` int(11) NOT NULL AUTO_INCREMENT,
   `id_siswa` int(11) NOT NULL,
@@ -76,9 +75,10 @@ CREATE TABLE `jawaban` (
   `nilai_esai` int(11) NOT NULL DEFAULT 0,
   `ragu` int(11) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id_jawaban`)
-) ENGINE=InnoDB AUTO_INCREMENT=171859 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=644735 DEFAULT CHARSET=latin1;
 
 
+DROP TABLE IF EXISTS `jawaban_tugas`;
 CREATE TABLE `jawaban_tugas` (
   `id_jawaban` int(11) NOT NULL AUTO_INCREMENT,
   `id_siswa` int(11) DEFAULT NULL,
@@ -90,9 +90,10 @@ CREATE TABLE `jawaban_tugas` (
   `nilai` varchar(5) DEFAULT NULL,
   `status` int(11) DEFAULT NULL,
   PRIMARY KEY (`id_jawaban`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6338 DEFAULT CHARSET=utf8;
 
 
+DROP TABLE IF EXISTS `jenis`;
 CREATE TABLE `jenis` (
   `id_jenis` varchar(30) NOT NULL,
   `nama` varchar(50) NOT NULL,
@@ -100,13 +101,15 @@ CREATE TABLE `jenis` (
   PRIMARY KEY (`id_jenis`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+TRUNCATE `jenis`;
 INSERT INTO `jenis` (`id_jenis`, `nama`, `status`) VALUES
 ('PAS',	'Penilaian Akhir Semester',	'tidak'),
 ('PAT',	'Penilaian Akhir Tahun',	'tidak'),
-('PTS',	'Penilaian Tengah Semester',	'aktif'),
+('PTS',	'Penilaian Tengah Semester',	'tidak'),
 ('ULH',	'ULANGAN HARIAN',	'tidak'),
-('USBK',	'Ujian Sekolah',	'tidak');
+('USBK',	'Ujian Sekolah',	'aktif');
 
+DROP TABLE IF EXISTS `jurusan`;
 CREATE TABLE `jurusan` (
   `jurusan_id` varchar(25) NOT NULL,
   `nama_jurusan_sp` varchar(100) DEFAULT NULL,
@@ -117,7 +120,9 @@ CREATE TABLE `jurusan` (
   PRIMARY KEY (`jurusan_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+TRUNCATE `jurusan`;
 
+DROP TABLE IF EXISTS `kelas`;
 CREATE TABLE `kelas` (
   `id_kelas` varchar(11) NOT NULL,
   `level` varchar(20) NOT NULL,
@@ -127,7 +132,9 @@ CREATE TABLE `kelas` (
   PRIMARY KEY (`id_kelas`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+TRUNCATE `kelas`;
 INSERT INTO `kelas` (`id_kelas`, `level`, `nama`, `rombongan_belajar_id`, `semester_id`) VALUES
+('',	'',	'',	NULL,	NULL),
 ('X NA',	'X',	'X NA',	NULL,	NULL),
 ('X NB',	'X',	'X NB',	NULL,	NULL),
 ('X TA',	'X',	'X TA',	NULL,	NULL),
@@ -146,6 +153,7 @@ INSERT INTO `kelas` (`id_kelas`, `level`, `nama`, `rombongan_belajar_id`, `semes
 ('XII TB',	'XII',	'XII TB',	NULL,	NULL),
 ('XII TC',	'XII',	'XII TC',	NULL,	NULL);
 
+DROP TABLE IF EXISTS `level`;
 CREATE TABLE `level` (
   `kode_level` varchar(5) NOT NULL,
   `keterangan` varchar(50) NOT NULL,
@@ -153,12 +161,15 @@ CREATE TABLE `level` (
   PRIMARY KEY (`kode_level`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+TRUNCATE `level`;
 INSERT INTO `level` (`kode_level`, `keterangan`, `rombongan_belajar_id`) VALUES
+('',	'',	NULL),
 ('EX',	'ALUMNI',	NULL),
 ('X',	'Kelas X',	NULL),
 ('XI',	'Kelas XI',	NULL),
 ('XII',	'Kelas XII',	NULL);
 
+DROP TABLE IF EXISTS `log`;
 CREATE TABLE `log` (
   `id_log` int(11) NOT NULL AUTO_INCREMENT,
   `id_siswa` int(11) NOT NULL,
@@ -166,9 +177,10 @@ CREATE TABLE `log` (
   `text` varchar(20) NOT NULL,
   `date` varchar(20) NOT NULL,
   PRIMARY KEY (`id_log`)
-) ENGINE=InnoDB AUTO_INCREMENT=33512 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=120288 DEFAULT CHARSET=latin1;
 
 
+DROP TABLE IF EXISTS `mapel`;
 CREATE TABLE `mapel` (
   `id_mapel` int(11) NOT NULL AUTO_INCREMENT,
   `kode` varchar(255) NOT NULL DEFAULT '0',
@@ -189,9 +201,10 @@ CREATE TABLE `mapel` (
   `kkm` int(11) DEFAULT NULL,
   `soal_agama` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id_mapel`)
-) ENGINE=InnoDB AUTO_INCREMENT=110 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=357 DEFAULT CHARSET=latin1;
 
 
+DROP TABLE IF EXISTS `mata_pelajaran`;
 CREATE TABLE `mata_pelajaran` (
   `kode_mapel` varchar(20) NOT NULL,
   `nama_mapel` varchar(150) NOT NULL,
@@ -200,6 +213,7 @@ CREATE TABLE `mata_pelajaran` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
+DROP TABLE IF EXISTS `materi`;
 CREATE TABLE `materi` (
   `id_materi` int(11) NOT NULL AUTO_INCREMENT,
   `id_guru` int(11) NOT NULL DEFAULT 0,
@@ -213,9 +227,10 @@ CREATE TABLE `materi` (
   `tgl` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `status` int(11) DEFAULT NULL,
   PRIMARY KEY (`id_materi`)
-) ENGINE=InnoDB AUTO_INCREMENT=45 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=678 DEFAULT CHARSET=utf8;
 
 
+DROP TABLE IF EXISTS `materi_komentar`;
 CREATE TABLE `materi_komentar` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_materi` int(11) NOT NULL,
@@ -224,23 +239,52 @@ CREATE TABLE `materi_komentar` (
   `level` varchar(20) DEFAULT NULL,
   `create_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4651 DEFAULT CHARSET=utf8;
 
 
+DROP TABLE IF EXISTS `meet`;
 CREATE TABLE `meet` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `id_guru` int(11) DEFAULT NULL,
   `id_mapel` varchar(50) DEFAULT NULL,
-  `id_kelas` varchar(11) DEFAULT NULL,
   `room` varchar(100) DEFAULT NULL,
   `judul` varchar(110) DEFAULT NULL,
   `deskripsi` varchar(250) DEFAULT NULL,
   `status` tinyint(1) DEFAULT 0,
   `create_at` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+  `create_by` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `create_by` (`create_by`),
+  CONSTRAINT `meet_ibfk_1` FOREIGN KEY (`create_by`) REFERENCES `pengawas` (`id_pengawas`) ON DELETE SET NULL
+) ENGINE=InnoDB AUTO_INCREMENT=95 DEFAULT CHARSET=utf8;
 
 
+DROP TABLE IF EXISTS `meet_has_class`;
+CREATE TABLE `meet_has_class` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_meet` int(11) NOT NULL,
+  `id_kelas` varchar(11) CHARACTER SET latin1 NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `id_meet` (`id_meet`),
+  KEY `id_kelas` (`id_kelas`),
+  CONSTRAINT `meet_has_class_ibfk_1` FOREIGN KEY (`id_meet`) REFERENCES `meet` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `meet_has_class_ibfk_2` FOREIGN KEY (`id_kelas`) REFERENCES `kelas` (`id_kelas`) ON DELETE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=159 DEFAULT CHARSET=utf8mb4;
+
+
+DROP TABLE IF EXISTS `meet_has_guru`;
+CREATE TABLE `meet_has_guru` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_meet` int(11) NOT NULL,
+  `id_guru` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `id_meet` (`id_meet`),
+  KEY `id_guru` (`id_guru`),
+  CONSTRAINT `meet_has_guru_ibfk_1` FOREIGN KEY (`id_meet`) REFERENCES `meet` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `meet_has_guru_ibfk_2` FOREIGN KEY (`id_guru`) REFERENCES `pengawas` (`id_pengawas`) ON DELETE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=65 DEFAULT CHARSET=utf8mb4;
+
+
+DROP TABLE IF EXISTS `nilai`;
 CREATE TABLE `nilai` (
   `id_nilai` int(11) NOT NULL AUTO_INCREMENT,
   `id_ujian` int(11) NOT NULL,
@@ -267,9 +311,10 @@ CREATE TABLE `nilai` (
   `id_esai` text DEFAULT NULL,
   `blok` int(11) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id_nilai`)
-) ENGINE=InnoDB AUTO_INCREMENT=11461 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=34607 DEFAULT CHARSET=latin1;
 
 
+DROP TABLE IF EXISTS `pengawas`;
 CREATE TABLE `pengawas` (
   `id_pengawas` int(11) NOT NULL AUTO_INCREMENT,
   `nip` varchar(50) DEFAULT NULL,
@@ -313,11 +358,12 @@ CREATE TABLE `pengawas` (
   `password2` text DEFAULT NULL,
   `ruang` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id_pengawas`)
-) ENGINE=InnoDB AUTO_INCREMENT=329 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=330 DEFAULT CHARSET=utf8;
 
 INSERT INTO `pengawas` (`id_pengawas`, `nip`, `nama`, `jabatan`, `username`, `password`, `level`, `no_ktp`, `tempat_lahir`, `tgl_lahir`, `jenis_kelamin`, `agama`, `no_hp`, `email`, `alamat_jalan`, `rt_rw`, `dusun`, `kelurahan`, `kecamatan`, `kode_pos`, `nuptk`, `bidang_studi`, `jenis_ptk`, `tgs_tambahan`, `status_pegawai`, `status_aktif`, `status_nikah`, `sumber_gaji`, `ahli_lab`, `nama_ibu`, `nama_suami`, `nik_suami`, `pekerjaan`, `tmt`, `keahlian_isyarat`, `kewarganegaraan`, `npwp`, `foto`, `ptk_id`, `password2`, `ruang`) VALUES
 (1,	'-',	'administrator',	'',	'admin',	'$2y$10$2rTCXEfsEIbKOCKKN5dQKeiJHFh1wlUC208yUKivwJU5rvL0ELGfa',	'admin',	'',	'',	'0000-00-00',	'',	'',	'',	'',	'',	'',	'',	'',	'',	0,	'',	'',	'',	'',	'',	'',	'',	'',	'',	'',	'',	'',	'',	'0000-00-00',	'',	'',	'',	'',	NULL,	NULL,	NULL);
 
+DROP TABLE IF EXISTS `pengumuman`;
 CREATE TABLE `pengumuman` (
   `id_pengumuman` int(11) NOT NULL AUTO_INCREMENT,
   `type` varchar(30) NOT NULL,
@@ -326,9 +372,10 @@ CREATE TABLE `pengumuman` (
   `text` longtext NOT NULL,
   `date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`id_pengumuman`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 
 
+DROP TABLE IF EXISTS `pk`;
 CREATE TABLE `pk` (
   `id_pk` varchar(10) NOT NULL,
   `program_keahlian` varchar(50) NOT NULL,
@@ -336,11 +383,13 @@ CREATE TABLE `pk` (
   PRIMARY KEY (`id_pk`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+TRUNCATE `pk`;
 INSERT INTO `pk` (`id_pk`, `program_keahlian`, `jurusan_id`) VALUES
 ('NAUTIKA',	'NAUTIKA KAPAL NIAGA',	NULL),
 ('semua',	'semua',	NULL),
 ('TEKNIKA',	'TEKNIKA KAPAL NIAGA',	NULL);
 
+DROP TABLE IF EXISTS `referensi_jurusan`;
 CREATE TABLE `referensi_jurusan` (
   `jurusan_id` varchar(10) NOT NULL,
   `nama_jurusan` varchar(100) DEFAULT NULL,
@@ -351,6 +400,7 @@ CREATE TABLE `referensi_jurusan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
+DROP TABLE IF EXISTS `registrasi_siswa`;
 CREATE TABLE `registrasi_siswa` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nis` varchar(30) DEFAULT NULL,
@@ -370,20 +420,24 @@ CREATE TABLE `registrasi_siswa` (
   `create_at` timestamp NULL DEFAULT current_timestamp(),
   PRIMARY KEY (`id`),
   UNIQUE KEY `registrasi_nis_siswa` (`nis`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8;
 
 
+DROP TABLE IF EXISTS `ruang`;
 CREATE TABLE `ruang` (
   `kode_ruang` varchar(10) NOT NULL,
   `keterangan` varchar(30) NOT NULL,
   PRIMARY KEY (`kode_ruang`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+TRUNCATE `ruang`;
 INSERT INTO `ruang` (`kode_ruang`, `keterangan`) VALUES
+('',	''),
 ('R1',	'ROOM DARING 1'),
 ('R2',	'ROOM DARING 2'),
 ('R3',	'ROOM DARING 3');
 
+DROP TABLE IF EXISTS `savsoft_options`;
 CREATE TABLE `savsoft_options` (
   `oid` int(11) NOT NULL AUTO_INCREMENT,
   `qid` int(11) NOT NULL,
@@ -394,6 +448,7 @@ CREATE TABLE `savsoft_options` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
+DROP TABLE IF EXISTS `savsoft_qbank`;
 CREATE TABLE `savsoft_qbank` (
   `qid` int(11) NOT NULL AUTO_INCREMENT,
   `question_type` varchar(100) NOT NULL DEFAULT 'Multiple Choice Single Answer',
@@ -409,6 +464,7 @@ CREATE TABLE `savsoft_qbank` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
+DROP TABLE IF EXISTS `semester`;
 CREATE TABLE `semester` (
   `semester_id` varchar(5) NOT NULL,
   `tahun_ajaran_id` varchar(4) NOT NULL,
@@ -421,20 +477,33 @@ CREATE TABLE `semester` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
+DROP TABLE IF EXISTS `server`;
 CREATE TABLE `server` (
   `kode_server` varchar(20) NOT NULL,
   `nama_server` varchar(30) NOT NULL,
   `status` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+TRUNCATE `server`;
+INSERT INTO `server` (`kode_server`, `nama_server`, `status`) VALUES
+('SERVER01',	'ELEARNING SERVER SATU',	'aktif'),
+('',	'',	'aktif');
 
+DROP TABLE IF EXISTS `sesi`;
 CREATE TABLE `sesi` (
   `kode_sesi` varchar(10) NOT NULL,
   `nama_sesi` varchar(30) NOT NULL,
   PRIMARY KEY (`kode_sesi`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+TRUNCATE `sesi`;
+INSERT INTO `sesi` (`kode_sesi`, `nama_sesi`) VALUES
+('',	''),
+('1',	'Sesi Pagi'),
+('2',	'Sesi Siang'),
+('3',	'Sesi Sore');
 
+DROP TABLE IF EXISTS `session`;
 CREATE TABLE `session` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `session_time` varchar(10) NOT NULL,
@@ -443,6 +512,7 @@ CREATE TABLE `session` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
+DROP TABLE IF EXISTS `setting`;
 CREATE TABLE `setting` (
   `id_setting` int(11) NOT NULL AUTO_INCREMENT,
   `aplikasi` varchar(100) DEFAULT NULL,
@@ -475,7 +545,11 @@ CREATE TABLE `setting` (
   PRIMARY KEY (`id_setting`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
+TRUNCATE `setting`;
+INSERT INTO `setting` (`id_setting`, `aplikasi`, `kode_sekolah`, `sekolah`, `jenjang`, `kepsek`, `nip`, `alamat`, `kecamatan`, `kota`, `telp`, `fax`, `web`, `email`, `logo`, `header`, `header_kartu`, `nama_ujian`, `versi`, `ip_server`, `waktu`, `server`, `id_server`, `url_host`, `token_api`, `sekolah_id`, `npsn`, `db_versi`) VALUES
+(1,	'E-LEARNING SPM',	'20302130',	'SMK SPM NASIONAL PURWOKERTO',	'SMK',	'Drs. Edi Wahyono, M.Si.',	'-',	'Jalan Kyai Haji Wachid Hasyim No. 93, Karangklesem, Purwokerto Selatan',	'Purwokerto Selatan',	'Purwokerto',	'0281 631 952',	'-',	'www.spmnasionalpwt.sch.id',	'spmnasionalpwt@gmail.com',	'dist/img/logo87.png',	'',	'KARTU PESERTA',	'Ujian Sekolah',	'3.0',	'139.180.158.157',	'Asia/Jakarta',	'pusat',	'SR01',	'https://apiq.host',	'fqyhJuxulHCA90',	'8cce47df-aae7-4274-83cb-5af3093eab56',	'69787351',	'8.0.21');
 
+DROP TABLE IF EXISTS `sinkron`;
 CREATE TABLE `sinkron` (
   `nama_data` varchar(50) NOT NULL,
   `data` varchar(50) DEFAULT NULL,
@@ -486,6 +560,7 @@ CREATE TABLE `sinkron` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
+DROP TABLE IF EXISTS `siswa`;
 CREATE TABLE `siswa` (
   `id_siswa` int(11) NOT NULL AUTO_INCREMENT,
   `id_kelas` varchar(11) DEFAULT NULL,
@@ -542,10 +617,12 @@ CREATE TABLE `siswa` (
   `rombongan_belajar_id` varchar(50) DEFAULT NULL,
   `status` int(11) DEFAULT 1,
   `online` int(11) DEFAULT 0,
+  `is_deleted` tinyint(1) DEFAULT 0,
   PRIMARY KEY (`id_siswa`)
-) ENGINE=InnoDB AUTO_INCREMENT=448 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=443 DEFAULT CHARSET=latin1;
 
 
+DROP TABLE IF EXISTS `soal`;
 CREATE TABLE `soal` (
   `id_soal` int(11) NOT NULL AUTO_INCREMENT,
   `id_mapel` int(11) NOT NULL,
@@ -566,9 +643,10 @@ CREATE TABLE `soal` (
   `fileD` mediumtext DEFAULT NULL,
   `fileE` mediumtext DEFAULT NULL,
   PRIMARY KEY (`id_soal`)
-) ENGINE=InnoDB AUTO_INCREMENT=2998 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8907 DEFAULT CHARSET=utf8;
 
 
+DROP TABLE IF EXISTS `token`;
 CREATE TABLE `token` (
   `id_token` int(11) NOT NULL AUTO_INCREMENT,
   `token` varchar(6) NOT NULL,
@@ -578,6 +656,7 @@ CREATE TABLE `token` (
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 
+DROP TABLE IF EXISTS `tugas`;
 CREATE TABLE `tugas` (
   `id_tugas` int(11) NOT NULL AUTO_INCREMENT,
   `id_guru` int(11) NOT NULL DEFAULT 0,
@@ -591,9 +670,10 @@ CREATE TABLE `tugas` (
   `tgl` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `status` int(11) DEFAULT NULL,
   PRIMARY KEY (`id_tugas`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=215 DEFAULT CHARSET=utf8;
 
 
+DROP TABLE IF EXISTS `ujian`;
 CREATE TABLE `ujian` (
   `id_ujian` int(11) NOT NULL AUTO_INCREMENT,
   `kode_nama` varchar(255) DEFAULT '0',
@@ -625,8 +705,9 @@ CREATE TABLE `ujian` (
   `ulang` int(11) DEFAULT NULL,
   `soal_agama` varchar(50) DEFAULT NULL,
   `reset` int(11) DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id_ujian`)
-) ENGINE=InnoDB AUTO_INCREMENT=131 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=363 DEFAULT CHARSET=latin1;
 
 
--- 2020-10-21 04:46:53
+-- 2021-04-04 15:05:56

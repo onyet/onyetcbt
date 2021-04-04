@@ -1,29 +1,74 @@
 <?php
 defined('APLIKASI') or exit('Anda tidak dizinkan mengakses langsung script ini!');
 
+function replace_meet_data($koneksi, $meetid, $class, $teachers) {
+
+    if (count($class) > 0 && count($teachers) > 0) {
+    
+        $query = mysqli_query($koneksi, "DELETE FROM meet_has_class WHERE id_meet = ". $meetid);
+        $query = mysqli_query($koneksi, "DELETE FROM meet_has_guru WHERE id_meet = ". $meetid);
+        
+        try {
+
+            foreach ($class as $key => $value) {
+                
+                $query = mysqli_query($koneksi, "INSERT INTO meet_has_class (id_meet, id_kelas) VALUES (". $meetid .", '". $value ."')");
+
+            }
+
+            foreach ($teachers as $key => $value) {
+                
+                $query = mysqli_query($koneksi, "INSERT INTO meet_has_guru (id_meet, id_guru) VALUES (". $meetid .", ". $value .")");
+
+            }
+
+            return TRUE;
+
+        } catch(Exception $e) {
+
+            return $e;
+
+        }
+    
+    } else {
+
+        return FALSE;
+
+    }
+
+}
+
 $action = $_GET['ac'];
 
 if ($action == 'add') {
-
     $judul  = addslashes($_POST['judul']);
-    $idguru = ($_SESSION['level'] == 'admin') ? $_POST['guru'] : $_SESSION['id_pengawas'];
+    // $idguru = ($_SESSION['level'] == 'admin') ? $_POST['guru'] : $_SESSION['id_pengawas'];
+    $idpengawas = $_SESSION['id_pengawas'];
+    $idguru = $_POST['guru'];
     $idmapel= $_POST['mapel'];
     $idkelas= $_POST['kelas'];
     $deskrip= addslashes($_POST['deskripsi']);
     $room   = APLIKASI;
-    $room   = $room . $idguru . $idmapel . $idkelas;
+    $room   = $room . $idpengawas . $idmapel . time();
     $room   = str_replace(array(' ', '\'', '"', '\\', '/', '=', '+'), '', $room);
     $room   = strtolower($room);
-
-    $exce = mysqli_num_rows(mysqli_query($koneksi, "SELECT * FROM meet WHERE room = '". $room ."'"));
+    $query = mysqli_query($koneksi, "SELECT * FROM meet WHERE room = '". $room ."' AND create_at = ". $idpengawas);
+    $exce = mysqli_num_rows($query);
 
     if ($exce > 0) {
         
-        $exce = mysqli_query($koneksi, "UPDATE meet SET judul = '". $judul ."', deskripsi = '". $deskrip ."' WHERE room = '". $room ."'");
+        $result = mysqli_fetch_row($query);
+        if (replace_meet_data($koneksi, $result[0], $idkelas, $idguru) === TRUE) {
+                
+            $exce = mysqli_query($koneksi, "UPDATE meet SET judul = '". $judul ."', deskripsi = '". $deskrip ."' WHERE room = '". $room ."' AND create_at = ". $idpengawas);
+        
+        }
 
     } else {
         
-        $exce = mysqli_query($koneksi, "INSERT INTO meet (id_guru,id_mapel,id_kelas,room,judul,deskripsi) VALUES (". $idguru .", '". $idmapel ."', '". $idkelas ."', '". $room ."', '". $judul ."', '". $deskrip ."')");
+        $exce = mysqli_query($koneksi, "INSERT INTO meet (id_mapel,room,judul,deskripsi,create_by) VALUES ('". $idmapel ."', '". $room ."', '". $judul ."', '". $deskrip ."', ". $idpengawas .")");
+        $idmeet = mysqli_insert_id($koneksi);
+        $exce = replace_meet_data($koneksi, $idmeet, $idkelas, $idguru);
 
     }
 
@@ -34,8 +79,16 @@ if ($action == 'add') {
 
 if ($action == 'delete') {
     
-    $room = $_GET['room'];
-    $exce = mysqli_query($koneksi, "DELETE FROM meet WHERE room = '". $room ."'");
+    $room = addslashes($_GET['room']);
+    $result = mysqli_fetch_row(mysqli_query($koneksi, "SELECT * FROM meet WHERE room = '". $room ."'"));
+    if ($result !== NULL) {
+
+        $idmeet = $result[0];
+        $exce = mysqli_query($koneksi, "DELETE FROM meet WHERE id = ". $idmeet);
+        $exce = mysqli_query($koneksi, "DELETE FROM meet_has_class WHERE id_meet = ". $idmeet);
+        $exce = mysqli_query($koneksi, "DELETE FROM meet_has_guru WHERE id_meet = ". $idmeet);
+    
+    }
 
     echo "<script>window.location = '?pg=meeting'</script>";
     exit();
@@ -81,11 +134,11 @@ if ($action == 'keluar') {
 
 }
 
-$query  = "SELECT * FROM meet LEFT JOIN pengawas ON meet.id_guru = pengawas.id_pengawas";
+$query  = "SELECT * FROM meet a LEFT JOIN pengawas p ON p.id_pengawas = a.create_by";
 
 if ($_SESSION['level'] != 'admin') {
     
-    $query .= " WHERE meet.id_guru = ";
+    $query .= " WHERE create_by = ";
     $query .= $_SESSION['id_pengawas'];
 
 }
@@ -105,7 +158,7 @@ $rooms  = mysqli_fetch_all(mysqli_query($koneksi, $query), MYSQLI_ASSOC);
                 </div>
             </div><!-- /.box-header -->
             <div class='box-body'>
-                <div class="alert alert-warning" role="alert">Guru harus masuk ke room dahulu, agar siswa dapat melihat room tersebut. Pastikan anda memiliki koneksi yang memadai atau stabil.
+                <div class="alert alert-warning" role="alert">Pastikan anda memiliki koneksi yang memadai atau stabil.
                 </div>
                 <div class="row">
                     <?php
@@ -117,8 +170,21 @@ $rooms  = mysqli_fetch_all(mysqli_query($koneksi, $query), MYSQLI_ASSOC);
                                 <h3><?= substr($value['judul'], 0, 18) ?></h3>
                                 <p>
                                     <span class="badge bg-red"><?= strtoupper($value['nama']) ?></span>
-                                    <span class="badge bg-yellow"><?= strtoupper($value['id_kelas']) ?></span>
+                                    <?php
+                                        $gurus = mysqli_fetch_all(mysqli_query($koneksi, "SELECT * FROM meet_has_guru a LEFT JOIN pengawas b ON a.id_guru = b.id_pengawas WHERE a.id_meet = ". $value['id']), MYSQLI_ASSOC);
+                                        foreach ($gurus as $key2 => $value2) {
+                                            echo '
+                                            <span class="badge bg-red">'. strtoupper($value2['nama']) .'</span>';
+                                        }
+                                    ?>
                                     <span class="badge bg-green"><?= strtoupper($value['id_mapel']) ?></span>
+                                    <?php
+                                        $kelas = mysqli_fetch_all(mysqli_query($koneksi, "SELECT * FROM meet_has_class a LEFT JOIN kelas b ON a.id_kelas = b.id_kelas WHERE a.id_meet = ". $value['id']), MYSQLI_ASSOC);
+                                        foreach ($kelas as $key2 => $value2) {
+                                            echo '
+                                            <span class="badge bg-yellow">'. strtoupper($value2['nama']) .'</span>';
+                                        }
+                                    ?>
                                 </p>
                                 <p>
                                     <?= $value['deskripsi'] ?>
@@ -142,6 +208,60 @@ $rooms  = mysqli_fetch_all(mysqli_query($koneksi, $query), MYSQLI_ASSOC);
     </div>
 </div>
 
+<!-- Invitation -->
+<?php
+if ($_SESSION['level'] != 'admin') {
+
+    $inveted = mysqli_fetch_all(mysqli_query($koneksi, "SELECT *, b.id AS id_meet_has_guru FROM meet a LEFT JOIN meet_has_guru b ON a.id = b.id_meet LEFT JOIN pengawas p ON p.id_pengawas = a.create_by WHERE b.id_guru = ". $_SESSION['id_pengawas'] ." AND a.create_by != ". $_SESSION['id_pengawas']), MYSQLI_ASSOC);
+
+    if ($inveted !== NULL) {
+?>
+<div class='row'>
+    <div class='col-md-12'>
+        <div class='box box-solid'>
+            <div class='box-header with-border '>
+                <h3 class='box-title'><i class="fas fa-video fa-fw"></i> Undangan Tatap Muka</h3>
+            </div><!-- /.box-header -->
+            <div class='box-body'>
+                <div class="row">
+                    <?php
+                    foreach ($inveted as $key => $value) {
+                    ?>
+                    <div class="col-sm-6 col-md-4">
+                        <div class="thumbnail">
+                            <div class="caption bg-info">
+                                <h3><?= substr($value['judul'], 0, 18) ?></h3>
+                                <p>
+                                    <span class="badge bg-red">Dari : <?= strtoupper($value['nama']) ?></span>
+                                    <span class="badge bg-green"><?= strtoupper($value['id_mapel']) ?></span>
+                                    <?php
+                                        $kelas = mysqli_fetch_all(mysqli_query($koneksi, "SELECT * FROM meet_has_class a LEFT JOIN kelas b ON a.id_kelas = b.id_kelas WHERE a.id_meet = ". $value['id']), MYSQLI_ASSOC);
+                                        foreach ($kelas as $key2 => $value2) {
+                                            echo '
+                                            <span class="badge bg-yellow">'. strtoupper($value2['nama']) .'</span>';
+                                        }
+                                    ?>
+                                </p>
+                                <p>
+                                    <?= $value['deskripsi'] ?>
+                                </p>
+                                <div class="btn-group btn-group-lg btn-group-justified" role="group"
+                                    aria-label="Justified button group">
+                                    <a href="?pg=meeting&ac=masuk&room=<?= base64_encode($value['room']) ?>" class="btn btn-info" role="button">Terima & Masuk</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <?php
+                    }
+                    ?>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<?php }} ?>
+
 <div class="modal fade" id="addRoom" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
     <div class="modal-dialog" role="document">
         <form action="?pg=meeting&ac=add" method="post">
@@ -159,7 +279,7 @@ $rooms  = mysqli_fetch_all(mysqli_query($koneksi, $query), MYSQLI_ASSOC);
                         <?php if($_SESSION['level'] == 'admin') { ?>
                         <div class="form-group">
                             <label for="recipient-name" class="control-label">Guru</label>
-                            <select name="guru" class="form-control" required>
+                            <select name="guru[]" class="form-control select2" style="width:100%" multiple="true" required>
                                 <?php
                                     $exce = mysqli_fetch_all(mysqli_query($koneksi, "SELECT * FROM pengawas WHERE level='guru' ORDER BY nama ASC"), MYSQLI_ASSOC);
 
@@ -188,7 +308,7 @@ $rooms  = mysqli_fetch_all(mysqli_query($koneksi, $query), MYSQLI_ASSOC);
                         </div>
                         <div class="form-group">
                             <label for="recipient-name" class="control-label">Kelas</label>
-                            <select name="kelas" class="form-control" required>
+                            <select name="kelas[]" class="form-control select2" style="width:100%" multiple="true" required>
                                 <?php
                                     $exce = mysqli_fetch_all(mysqli_query($koneksi, "SELECT * FROM kelas ORDER BY nama ASC"), MYSQLI_ASSOC);
 

@@ -84,7 +84,7 @@ Jika anda mendapati bahwa aplikasi ini memeiliki kerentanan keamanan atau ada fu
 Silahkan cek halaman github kami [disini.](https://github.com/onyet)
 Atau langsung ke rekening berikut :
 
-[] Bank BCA : 0461-869636 A/n Dian Mukti Wibowo
+1. Bank BCA : 0461-869636 A/n Dian Mukti Wibowo
 
 ## 🎁 Kontribusi
 

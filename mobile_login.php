@@ -2,6 +2,11 @@
 require("config/config.default.php");
 require("config/config.ocbt.php");
 
+if (!isset($setting)) {
+    echo "<script>window.location = '". $homeurl ."/_install.php'; </script>";
+    exit();
+}
+
 if (isset($_SESSION['id_pengawas'])) {
     echo "<script>window.location = '". $homeurl ."/admin/index.php'; </script>";
     exit();

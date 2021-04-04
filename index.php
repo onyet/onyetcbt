@@ -64,7 +64,6 @@ $tglsekarang = time();
 
     <script src='<?= $homeurl ?>/plugins/jQuery/jquery-2.2.3.min.js'></script>
     <!-- <script src='<?= $homeurl ?>/plugins/tinymce/tinymce.min.js'></script> -->
-
     <style>
         @font-face {
             font-family: 'tulisan_keren';
@@ -236,7 +235,7 @@ $tglsekarang = time();
                 </ul><!-- /.sidebar-menu -->
             </section>
         </aside>
-        <div class='content-wrapper' style='background-image: url(admin/backgroun.jpg);background-size: cover;'>
+        <div class='content-wrapper' style='background-image: url(admin/acs.jpg);background-size: cover;'>
             <section class='content-header' style="height:102px;z-index:0;background:#0979c7">
             </section>
             <section class='content' style="margin-top:-95px">
@@ -304,8 +303,7 @@ $tglsekarang = time();
                             </div>
                             <!-- /.box -->
                         </div>
-
-                        <div class='col-md-8'>
+                        <div class='col-md-4'>
                             <div class='box box-solid'>
                                 <div class='box-header with-border'>
                                     <h3 class='box-title'><i class="fas fa-bullhorn    "></i> Pengumuman</h3>
@@ -953,7 +951,7 @@ $tglsekarang = time();
 	<script src='<?= $homeurl ?>/plugins/summernote/summernote.min.js'></script>
     <script src='<?= $homeurl ?>/plugins/slimScroll/jquery.slimscroll.min.js'></script>
     <script src='<?= $homeurl ?>/plugins/iCheck/icheck.min.js'></script>
-    <script src='<?= $homeurl ?>/dist/js/app.min.js'></script>
+    <script src='<?= $homeurl ?>/dist/js/app.js'></script>
     <script src='<?= $homeurl ?>/plugins/sweetalert2/dist/sweetalert2.min.js'></script>
     <!-- <script src='<?= $homeurl ?>/plugins/slidemenu/jquery-slide-menu.js'></script> -->
     <script src='<?= $homeurl ?>/plugins/mousetrap/mousetrap.min.js'></script>

@@ -3,10 +3,11 @@
 $host = 'localhost';
 $user = 'root';
 $pass = '';
-$debe = 'db_ocbt_github';
+$debe = 'db_ocbt';
+$port = '3306';
 
 
-$koneksi = mysqli_connect($host, $user, $pass, "");
+$koneksi = mysqli_connect($host, $user, $pass, $debe, $port);
 if ($koneksi) {
 	$pilihdb = mysqli_select_db($koneksi, $debe);
 	if ($pilihdb) {
@@ -18,4 +19,7 @@ if ($koneksi) {
 			date_default_timezone_set($setting['waktu']);
 		}
 	}
+} else {
+	echo 'ERROR 500 : Your Databases Settings is invalid!';
+	exit();
 }

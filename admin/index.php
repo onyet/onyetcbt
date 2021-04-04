@@ -90,13 +90,18 @@ $ujian = mysqli_num_rows(mysqli_query($koneksi, "SELECT * FROM ujian where statu
 	<script src='<?= $homeurl ?>/plugins/datatables/extensions/Select/js/dataTables.select.min.js'></script>
 	<script src='<?= $homeurl ?>/plugins/datatables/extensions/Select/js/select.bootstrap.min.js'></script>
 
-	<!-- <style type='text/css' media='print'>
+	<style type='text/css' media='print'>
 		.page {
 			-webkit-transform: rotate(-90deg);
 			-moz-transform: rotate(-90deg);
 			filter: 'progid:DXImageTransform.Microsoft.BasicImage(rotation=3)';
 		}
-	</style> -->
+	</style>
+	<style type="text/css">
+		.box-solid {
+			min-height: 290px !important;
+		}
+	</style>
 </head>
 
 <div class="modal fade" id="modalversidb" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
@@ -166,7 +171,7 @@ $ujian = mysqli_num_rows(mysqli_query($koneksi, "SELECT * FROM ujian where statu
 								</ul>
 							</li>
 						<?php endif; ?>
-						<li><a style="color:#000" href='?pg=informasi'><i class="fas fa-info fa-lg  "></i></a></li>
+						<li><a style="color:#000" href='index.php?pg=informasi'><i class="fas fa-info fa-lg  "></i></a></li>
 						<li class='dropdown user user-menu'>
 							<a href='#' class='dropdown-toggle' data-toggle='dropdown'>
 								<img src='<?= $homeurl ?>/foto/fotoguru/<?= ($pengawas['foto'] <> '') ? $pengawas['foto'] : 'default.png' ?>' class='user-image' alt='+'>
@@ -194,9 +199,9 @@ $ujian = mysqli_num_rows(mysqli_query($koneksi, "SELECT * FROM ujian where statu
 									<div class='pull-left'>
 										<?php
 										if ($pengawas['level'] == 'admin') :
-											echo "<a href='?pg=pengaturan' class='btn btn-sm btn-default btn-flat'><i class='fa fa-gear'></i> Pengaturan</a>";
+											echo "<a href='index.php?pg=pengaturan' class='btn btn-sm btn-default btn-flat'><i class='fa fa-gear'></i> Pengaturan</a>";
 										elseif ($pengawas['level'] == 'guru') :
-											echo "<a href='?pg=editguru' class='btn btn-sm btn-default btn-flat'><i class='fa fa-gear'></i> Edit Profil</a>";
+											echo "<a href='index.php?pg=editguru' class='btn btn-sm btn-default btn-flat'><i class='fa fa-gear'></i> Edit Profil</a>";
 										endif
 										?>
 									</div>
@@ -225,7 +230,7 @@ $ujian = mysqli_num_rows(mysqli_query($koneksi, "SELECT * FROM ujian where statu
 						</a>
 					</li>
 					<li>
-						<a style="color:#fff" class="btn-logout" href="?pg=pengaturan">
+						<a style="color:#fff" class="btn-logout" href="index.php?pg=pengaturan">
 							<span class="fa fa-user-cog fa-2x"></span><br>Pengaturan
 						</a>
 					</li>
@@ -254,9 +259,9 @@ $ujian = mysqli_num_rows(mysqli_query($koneksi, "SELECT * FROM ujian where statu
 									</span>
 								</a>
 								<ul class='treeview-menu'>
-									<!-- <li><a href='?pg=sinkrondapo'><i class='fa fa-upload'></i> <span>Sinkron Dapodik</span><span class='pull-right-container'><small class='label pull-right bg-green'>new</small></span></a></li> -->
-									<li><a href='?pg=sinkron'><i class='fas fa-angle-double-right fa-fw'></i> <span> Sinkron Pusat</span></a></li>
-									<li><a href='?pg=sinkronset'><i class='fas fa-angle-double-right fa-fw'></i> <span> Sinkron Setting</span></a></li>
+									<!-- <li><a href='index.php?pg=sinkrondapo'><i class='fa fa-upload'></i> <span>Sinkron Dapodik</span><span class='pull-right-container'><small class='label pull-right bg-green'>new</small></span></a></li> -->
+									<li><a href='index.php?pg=sinkron'><i class='fas fa-angle-double-right fa-fw'></i> <span> Sinkron Pusat</span></a></li>
+									<li><a href='index.php?pg=sinkronset'><i class='fas fa-angle-double-right fa-fw'></i> <span> Sinkron Setting</span></a></li>
 
 								</ul>
 							</li>
@@ -272,47 +277,47 @@ $ujian = mysqli_num_rows(mysqli_query($koneksi, "SELECT * FROM ujian where statu
 									</span>
 								</a>
 								<ul class='treeview-menu'>
-									<li><a href='?pg=importmaster'><i class='fa fa-upload'></i> <span>Import Data Master</span><span class='pull-right-container'><small class='label pull-right bg-green'>new</small></span></a></li>
-									<li><a href='?pg=matapelajaran'><i class='fas fa-angle-double-right fa-fw'></i> <span> Data Mata Pelajaran</span></a></li>
-									<li><a href='?pg=jenisujian'><i class='fas fa-angle-double-right fa-fw'></i> <span> Data Jenis Ujian</span></a></li>
+									<li><a href='index.php?pg=importmaster'><i class='fa fa-upload'></i> <span>Import Data Master</span><span class='pull-right-container'><small class='label pull-right bg-green'>new</small></span></a></li>
+									<li><a href='index.php?pg=matapelajaran'><i class='fas fa-angle-double-right fa-fw'></i> <span> Data Mata Pelajaran</span></a></li>
+									<li><a href='index.php?pg=jenisujian'><i class='fas fa-angle-double-right fa-fw'></i> <span> Data Jenis Ujian</span></a></li>
 
 									<?php if ($setting['jenjang'] == 'SMK') : ?>
-										<li><a href='?pg=pk'><i class='fas fa-angle-double-right fa-fw'></i> <span> Data Jurusan</span></a></li>
+										<li><a href='index.php?pg=pk'><i class='fas fa-angle-double-right fa-fw'></i> <span> Data Jurusan</span></a></li>
 									<?php endif ?>
 
-									<li><a href='?pg=kelas'><i class='fa fa-angle-double-right fa-fw'></i> <span> Data Kelas</span></a></li>
-									<li><a href='?pg=ruang'><i class='fa fa-angle-double-right fa-fw'></i> <span> Data Ruangan</span></a></li>
-									<li><a href='?pg=level'><i class='fas fa-angle-double-right fa-fw'></i> <span> Data Level</span></a></li>
-									<li><a href='?pg=sesi'><i class='fas fa-angle-double-right fa-fw'></i> <span> Data Sesi</span></a></li>
-									<li><a href='?pg=dataserver'><i class='fas fa-angle-double-right fa-fw'></i> <span> Data Server</span></a></li>
+									<li><a href='index.php?pg=kelas'><i class='fa fa-angle-double-right fa-fw'></i> <span> Data Kelas</span></a></li>
+									<li><a href='index.php?pg=ruang'><i class='fa fa-angle-double-right fa-fw'></i> <span> Data Ruangan</span></a></li>
+									<li><a href='index.php?pg=level'><i class='fas fa-angle-double-right fa-fw'></i> <span> Data Level</span></a></li>
+									<li><a href='index.php?pg=sesi'><i class='fas fa-angle-double-right fa-fw'></i> <span> Data Sesi</span></a></li>
+									<li><a href='index.php?pg=dataserver'><i class='fas fa-angle-double-right fa-fw'></i> <span> Data Server</span></a></li>
 								</ul>
 							</li>
 						<?php endif ?>
 						
-						<li class='treeview'><a href='?pg=siswa'><i class="fas fa-user-friends side-menu-icon fa-fw   "></i> <span>Peserta Ujian</span></a></li>
+						<li class='treeview'><a href='index.php?pg=siswa'><i class="fas fa-user-friends side-menu-icon fa-fw   "></i> <span>Peserta Ujian</span></a></li>
 
-						<li><a href='?pg=statusall'><i class="fas fa-user-check side-menu-icon fa-fw    "></i> <span>Status Peserta</span></a></li>
+						<li><a href='index.php?pg=statusall'><i class="fas fa-user-check side-menu-icon fa-fw    "></i> <span>Status Peserta</span></a></li>
 
-						<li class='treeview'><a href='?pg=registrasi'><i class="fas fa-user-clock side-menu-icon fa-fw   "></i> <span>Registrasi</span></a></li>
+						<li class='treeview'><a href='index.php?pg=registrasi'><i class="fas fa-user-clock side-menu-icon fa-fw   "></i> <span>Registrasi</span></a></li>
 
-						<li class='treeview'><a href='?pg=absensi'><i class="fas fa-spell-check side-menu-icon fa-fw   "></i> <span>Absensi</span></a></li>
+						<li class='treeview'><a href='index.php?pg=absensi'><i class="fas fa-spell-check side-menu-icon fa-fw   "></i> <span>Absensi</span></a></li>
 
-						<li class='treeview'><a href='?pg=meeting'><i class='fas fa-video side-menu-icon fa-fw'></i> Tatap Muka</a></li>
+						<li class='treeview'><a href='index.php?pg=meeting'><i class='fas fa-video side-menu-icon fa-fw'></i> Tatap Muka</a></li>
 
 						<li class='treeview'>
 							<a href='#'><i class="fas fa-edit side-menu-icon fa-fw"></i><span> E-Learning </span><span class='pull-right-container'> <i class='fa fa-angle-down pull-right'></i> </span></a>
 							<ul class='treeview-menu'>
-								<li><a href='?pg=materi'><i class='fas fa-angle-double-right fa-fw'></i> <span> Materi</span></a></li>
-								<li><a href='?pg=tugas'><i class='fas fa-angle-double-right  fa-fw'></i> <span>Tugas Terstruktur</span></a></li>
+								<li><a href='index.php?pg=materi'><i class='fas fa-angle-double-right fa-fw'></i> <span> Materi</span></a></li>
+								<li><a href='index.php?pg=tugas'><i class='fas fa-angle-double-right  fa-fw'></i> <span>Tugas Terstruktur</span></a></li>
 
 							</ul>
 						</li>
-						<!-- <li><a href='?pg=banksoal'><i class="fas fa-envelope-open-text side-menu-icon  fa-fw"></i> <span> Bank Soal</span></a></li> -->
+						<!-- <li><a href='index.php?pg=banksoal'><i class="fas fa-envelope-open-text side-menu-icon  fa-fw"></i> <span> Bank Soal</span></a></li> -->
 						<li class='treeview'>
 							<a href='#'><i class="fas fa-envelope-open-text side-menu-icon fa-fw"></i><span> Bank Soal </span><span class='pull-right-container'> <i class='fa fa-angle-down pull-right'></i> </span></a>
 							<ul class='treeview-menu'>
-								<li><a href='?pg=banksoal'><i class='fas fa-angle-double-right fa-fw'></i> <span> Daftar Soal</span></a></li>
-								<li><a href='?pg=filependukung'><i class='fas fa-angle-double-right  fa-fw'></i> <span>File Pendukung</span></a></li>
+								<li><a href='index.php?pg=banksoal'><i class='fas fa-angle-double-right fa-fw'></i> <span> Daftar Soal</span></a></li>
+								<li><a href='index.php?pg=filependukung'><i class='fas fa-angle-double-right  fa-fw'></i> <span>File Pendukung</span></a></li>
 
 							</ul>
 						</li>
@@ -320,88 +325,88 @@ $ujian = mysqli_num_rows(mysqli_query($koneksi, "SELECT * FROM ujian where statu
 						<li class='treeview'>
 							<a href='#'><i class="fas fa-desktop side-menu-icon fa-fw"></i><span> Menu Ujian </span><span class='pull-right-container'> <i class='fa fa-angle-down pull-right'></i> </span></a>
 							<ul class='treeview-menu'>
-								<li><a href='?pg=jadwal'><i class='fas fa-angle-double-right fa-fw'></i> <span> Jadwal Ujian</span></a></li>
-								<li><a href='?pg=reset'><i class='fas fa-angle-double-right  fa-fw'></i> <span>Reset Ujian</span></a></li>
+								<li><a href='index.php?pg=jadwal'><i class='fas fa-angle-double-right fa-fw'></i> <span> Jadwal Ujian</span></a></li>
+								<li><a href='index.php?pg=reset'><i class='fas fa-angle-double-right  fa-fw'></i> <span>Reset Ujian</span></a></li>
 
 							</ul>
 						</li>
 						<li class='treeview'>
 							<a href='#'><i class="fas fa-file-signature side-menu-icon fa-fw"></i><span> Nilai </span><span class='pull-right-container'> <i class='fa fa-angle-down pull-right'></i> </span></a>
 							<ul class='treeview-menu'>
-								<li><a href='?pg=nilaiujian'><i class='fas fa-angle-double-right fa-fw'></i> <span> Hasil Nilai</span></a></li>
-								<li><a href='?pg=semuanilai'><i class='fas fa-angle-double-right  fa-fw'></i> <span>Semua Nilai</span></a></li>
+								<li><a href='index.php?pg=nilaiujian'><i class='fas fa-angle-double-right fa-fw'></i> <span> Hasil Nilai</span></a></li>
+								<li><a href='index.php?pg=semuanilai'><i class='fas fa-angle-double-right  fa-fw'></i> <span>Semua Nilai</span></a></li>
 								<?php if ($setting['server'] == 'lokal') : ?>
-									<li><a href='?pg=dataujian'><i class='fas fa-angle-double-right fa-fw'></i> <span>Kirim Nilai</span></a></li>
+									<li><a href='index.php?pg=dataujian'><i class='fas fa-angle-double-right fa-fw'></i> <span>Kirim Nilai</span></a></li>
 								<?php endif ?>
 							</ul>
 						</li>
 						<li class='treeview'>
 							<a href='#'><i class="fas fa-print side-menu-icon fa-fw"></i><span> Cetak </span><span class='pull-right-container'> <i class='fa fa-angle-down pull-right'></i> </span></a>
 							<ul class='treeview-menu'>
-								<li><a href='?pg=absen'><i class='fas fa-angle-double-right fa-fw'></i> <span> Daftar Hadir Ujian</span></a></li>
-								<li><a href='?pg=kartu'><i class='fas fa-angle-double-right fa-fw'></i> <span> Cetak Kartu Ujian</span></a></li>
-								<li><a href='?pg=berita'><i class='fas fa-angle-double-right fa-fw'></i> <span> Berita Acara Ujian</span></a></li>
+								<li><a href='index.php?pg=absen'><i class='fas fa-angle-double-right fa-fw'></i> <span> Daftar Hadir Ujian</span></a></li>
+								<li><a href='index.php?pg=kartu'><i class='fas fa-angle-double-right fa-fw'></i> <span> Cetak Kartu Ujian</span></a></li>
+								<li><a href='index.php?pg=berita'><i class='fas fa-angle-double-right fa-fw'></i> <span> Berita Acara Ujian</span></a></li>
 							</ul>
 						</li>
 
-						<li class='treeview'><a href='?pg=pengumuman'><i class="fas fa-bullhorn side-menu-icon fa-fw"></i> <span> Pengumuman</span></a></li>
+						<li class='treeview'><a href='index.php?pg=pengumuman'><i class="fas fa-bullhorn side-menu-icon fa-fw"></i> <span> Pengumuman</span></a></li>
 						<li class='treeview'>
 							<a href='#'><i class="fas fa-users-cog side-menu-icon fa-fw"></i> <span>Manajemen User</span><span class='pull-right-container'> <i class='fa fa-angle-down pull-right'></i> </span></a>
 							<ul class='treeview-menu'>
-								<li><a href='?pg=pengawas'><i class='fas fa-angle-double-right fa-fw'></i> <span>Data Administrator</span></a></li>
-								<li><a href='?pg=guru'><i class='fas fa-angle-double-right fa-fw'></i> <span>Data Guru</span></a></li>
-								<li><a href='?pg=proktor'><i class='fas fa-angle-double-right fa-fw'></i> <span>Data Proktor</span></a></li>
-								<li><a href='?pg=user'><i class='fas fa-angle-double-right fa-fw'></i> <span>Data Pengawas</span></a></li>
+								<li><a href='index.php?pg=pengawas'><i class='fas fa-angle-double-right fa-fw'></i> <span>Data Administrator</span></a></li>
+								<li><a href='index.php?pg=guru'><i class='fas fa-angle-double-right fa-fw'></i> <span>Data Guru</span></a></li>
+								<li><a href='index.php?pg=proktor'><i class='fas fa-angle-double-right fa-fw'></i> <span>Data Proktor</span></a></li>
+								<li><a href='index.php?pg=user'><i class='fas fa-angle-double-right fa-fw'></i> <span>Data Pengawas</span></a></li>
 							</ul>
 						</li>
 						<li class="header">PENGATURAN</li>
-						<li class='treeview'><a href='?pg=pengaturan'><i class="fas fa-tools side-menu-icon fa-fw"></i> <span>Pengaturan</span></a></li>
+						<li class='treeview'><a href='index.php?pg=pengaturan'><i class="fas fa-tools side-menu-icon fa-fw"></i> <span>Pengaturan</span></a></li>
 
 					<?php endif ?>
 					<?php if ($pengawas['level'] == 'guru') : ?>
-						<li class='treeview'><a href='?pg=siswa'><i class="fas side-menu-icon fa-user-friends fa-lg fa-fw"></i> <span>Peserta Ujian</span></a></li>
-						<li class='treeview'><a href='?pg=absensi'><i class="fas fa-spell-check side-menu-icon fa-fw   "></i> <span>Absensi</span></a></li>
-						<li><a href='?pg=editguru'><i class="fas side-menu-icon fa-users-cog fa-fw"></i> <span>Profil Saya</span></a></li>
-						<li><a href='?pg=banksoal'><i class="fas side-menu-icon fa-envelope-open-text fa-fw"></i> <span>Bank Soal</span></a></li>
-						<li class='treeview'><a href='?pg=meeting'><i class='fas fa-video side-menu-icon fa-fw'></i> Tatap Muka</a></li>
-						<li><a href='?pg=materi'><i class='fas fa-file side-menu-icon fa-fw'></i> <span> Materi</span></a></li>
-						<li><a href='?pg=tugas'><i class="fas side-menu-icon fa-edit fa-fw"></i> <span>Tugas Terstruktur</span></a></li>
+						<li class='treeview'><a href='index.php?pg=siswa'><i class="fas side-menu-icon fa-user-friends fa-lg fa-fw"></i> <span>Peserta Ujian</span></a></li>
+						<li class='treeview'><a href='index.php?pg=absensi'><i class="fas fa-spell-check side-menu-icon fa-fw   "></i> <span>Absensi</span></a></li>
+						<li><a href='index.php?pg=editguru'><i class="fas side-menu-icon fa-users-cog fa-fw"></i> <span>Profil Saya</span></a></li>
+						<li><a href='index.php?pg=banksoal'><i class="fas side-menu-icon fa-envelope-open-text fa-fw"></i> <span>Bank Soal</span></a></li>
+						<li class='treeview'><a href='index.php?pg=meeting'><i class='fas fa-video side-menu-icon fa-fw'></i> Tatap Muka</a></li>
+						<li><a href='index.php?pg=materi'><i class='fas fa-file side-menu-icon fa-fw'></i> <span> Materi</span></a></li>
+						<li><a href='index.php?pg=tugas'><i class="fas side-menu-icon fa-edit fa-fw"></i> <span>Tugas Terstruktur</span></a></li>
 						
 						<li class='treeview'>
 							<a href='#'><i class="fas fa-desktop side-menu-icon fa-fw"></i><span> Menu Ujian </span><span class='pull-right-container'> <i class='fa fa-angle-down pull-right'></i> </span></a>
 							<ul class='treeview-menu'>
-								<li><a href='?pg=jadwal'><i class='fas fa-angle-double-right fa-fw'></i> <span> Jadwal Ujian</span></a></li>
-								<li><a href='?pg=reset'><i class='fas fa-angle-double-right  fa-fw'></i> <span>Reset Ujian</span></a></li>
+								<li><a href='index.php?pg=jadwal'><i class='fas fa-angle-double-right fa-fw'></i> <span> Jadwal Ujian</span></a></li>
+								<li><a href='index.php?pg=reset'><i class='fas fa-angle-double-right  fa-fw'></i> <span>Reset Ujian</span></a></li>
 
 							</ul>
 						</li>
-						<li><a href='?pg=nilaiujian'><i class='fas fa-file-signature side-menu-icon fa-fw'></i> <span>Hasil Nilai</span></a></li>
+						<li><a href='index.php?pg=nilaiujian'><i class='fas fa-file-signature side-menu-icon fa-fw'></i> <span>Hasil Nilai</span></a></li>
 
 					<?php endif ?>
 
 					<?php if ($pengawas['level'] == 'pengawas') : ?>
-						<li><a href='?pg=siswa'><i class="fas side-menu-icon fa-user-friends fa-lg fa-fw"></i> <span>Peserta Ujian</span></a></li>
-						<li><a href='?pg=statussiswa'><i class="fas side-menu-icon fa-users-cog fa-fw"></i> <span>Status Peserta</span></a></li>
-						<li><a href='?pg=jadwal'><i class='fas fas fa-desktop side-menu-icon fa-fw'></i> <span> Jadwal Ujian</span></a></li>
+						<li><a href='index.php?pg=siswa'><i class="fas side-menu-icon fa-user-friends fa-lg fa-fw"></i> <span>Peserta Ujian</span></a></li>
+						<li><a href='index.php?pg=statussiswa'><i class="fas side-menu-icon fa-users-cog fa-fw"></i> <span>Status Peserta</span></a></li>
+						<li><a href='index.php?pg=jadwal'><i class='fas fas fa-desktop side-menu-icon fa-fw'></i> <span> Jadwal Ujian</span></a></li>
 					<?php endif ?>
 
 					<?php if ($pengawas['level'] == 'proktor') : ?>
-						<li class='treeview'><a href='?pg=siswa'><i class="fas side-menu-icon fa-user-friends fa-lg fa-fw"></i> <span>Peserta Ujian</span></a></li>
-						<li><a href='?pg=statussiswa'><i class="fas side-menu-icon fa-users-cog fa-fw"></i> <span>Status Peserta</span></a></li>
+						<li class='treeview'><a href='index.php?pg=siswa'><i class="fas side-menu-icon fa-user-friends fa-lg fa-fw"></i> <span>Peserta Ujian</span></a></li>
+						<li><a href='index.php?pg=statussiswa'><i class="fas side-menu-icon fa-users-cog fa-fw"></i> <span>Status Peserta</span></a></li>
 						<li class='treeview'>
 							<a href='#'><i class="fas fa-desktop side-menu-icon fa-fw"></i><span> Menu Ujian </span><span class='pull-right-container'> <i class='fa fa-angle-down pull-right'></i> </span></a>
 							<ul class='treeview-menu'>
-								<li><a href='?pg=jadwal'><i class='fas fa-angle-double-right fa-fw'></i> <span> Jadwal Ujian</span></a></li>
-								<li><a href='?pg=reset'><i class='fas fa-angle-double-right  fa-fw'></i> <span>Reset Ujian</span></a></li>
+								<li><a href='index.php?pg=jadwal'><i class='fas fa-angle-double-right fa-fw'></i> <span> Jadwal Ujian</span></a></li>
+								<li><a href='index.php?pg=reset'><i class='fas fa-angle-double-right  fa-fw'></i> <span>Reset Ujian</span></a></li>
 
 							</ul>
 						</li>
 						<li class='treeview'>
 							<a href='#'><i class="fas fa-print side-menu-icon fa-fw"></i><span> Cetak </span><span class='pull-right-container'> <i class='fa fa-angle-down pull-right'></i> </span></a>
 							<ul class='treeview-menu'>
-								<li><a href='?pg=absen'><i class='fas fa-angle-double-right fa-fw'></i> <span> Daftar Hadir Ujian</span></a></li>
-								<li><a href='?pg=kartu'><i class='fas fa-angle-double-right fa-fw'></i> <span> Cetak Kartu Ujian</span></a></li>
-								<li><a href='?pg=berita'><i class='fas fa-angle-double-right fa-fw'></i> <span> Berita Acara Ujian</span></a></li>
+								<li><a href='index.php?pg=absen'><i class='fas fa-angle-double-right fa-fw'></i> <span> Daftar Hadir Ujian</span></a></li>
+								<li><a href='index.php?pg=kartu'><i class='fas fa-angle-double-right fa-fw'></i> <span> Cetak Kartu Ujian</span></a></li>
+								<li><a href='index.php?pg=berita'><i class='fas fa-angle-double-right fa-fw'></i> <span> Berita Acara Ujian</span></a></li>
 							</ul>
 						</li>
 					<?php endif ?>
@@ -419,7 +424,7 @@ $ujian = mysqli_num_rows(mysqli_query($koneksi, "SELECT * FROM ujian where statu
 			</section>
 		</aside>
 
-		<div class='content-wrapper' style='background-image: url(backgroun.jpg);background-size: cover;'>
+		<div class='content-wrapper' style='background-image: url(acs.jpg);background-size: cover;'>
 			<section class='content-header'>
 				<h1>
 					&nbsp;<span class='hidden-xs'><?= $setting['aplikasi'] . '-' . $jenjang ?></span>
@@ -496,22 +501,8 @@ $ujian = mysqli_num_rows(mysqli_query($koneksi, "SELECT * FROM ujian where statu
 
 									<!-- /.box-header -->
 									<div class="box-body">
-										<p><b>Hubungi Programmer</b></p>
-
-										<ul class="list-group">
-											<li class="list-group-item">
-												<a href="https://wa.me/6282221874400" target="_blank" class="btn btn-success">
-													<i class="fab fa-whatsapp"></i> Whatsapp
-												</a></li>
-											<li class="list-group-item">
-												<a href="https://t.me/fardamukti" target="_blank" class="btn btn-primary">
-													<i class="fab fa-telegram-plane"></i> Telegram
-												</a></li>
-											<li class="list-group-item">
-												<a href="mailto:onyetcorp@gmail.com" target="_blank" class="btn btn-danger">
-													<i class="far fa-envelope"></i> Kirim Email
-												</a></li>
-										</ul>
+										<p><b>Widget</b></p>
+										<p>Shortcut box widget</p>
 										<div class="col-lg-6">
 											<div class="small-box bg-blue">
 												<div class="inner">
@@ -521,7 +512,7 @@ $ujian = mysqli_num_rows(mysqli_query($koneksi, "SELECT * FROM ujian where statu
 												<div class="icon">
 													<i class="fa fa-users"></i>
 												</div>
-												<a href="?pg=siswa" class="small-box-footer">Lihat siswa <i class="fa fa-arrow-circle-right"></i></a>
+												<a href="index.php?pg=siswa" class="small-box-footer">Lihat siswa <i class="fa fa-arrow-circle-right"></i></a>
 											</div>
 										</div>
 
@@ -545,77 +536,69 @@ $ujian = mysqli_num_rows(mysqli_query($koneksi, "SELECT * FROM ujian where statu
 												<div class="icon">
 													<i class="fa fa-school"></i>
 												</div>
-												<a href="?pg=kelas" class="small-box-footer">Lihat kelas <i class="fa fa-arrow-circle-right"></i></a>
+												<a href="index.php?pg=kelas" class="small-box-footer">Lihat kelas <i class="fa fa-arrow-circle-right"></i></a>
 											</div>
 										</div>
-									</div>
-										<!-- /.box-body -->
 									</div>
 									<!-- /.box -->
 								</div>
 
 							</div>
-							<div class='animated flipInX col-md-8'>
-								<div class="row">
-									<?php if ($setting['server'] == 'lokal') : ?>
-										<div class="col-lg-12">
-											<div class="small-box ">
-												<div class="inner">
-													<img id='loading-image' src='<?= $homeurl ?>/dist/img/ajax-loader.gif' style='display:none; width:50px;' />
-													<p id='statusserver'></p>
-													<p>Status Server</p>
-												</div>
-												<div class="icon">
-													<i class="fa fa-desktop"></i>
-												</div>
-												<a href="?pg=sinkronset" class="small-box-footer">Selengkapnya <i class="fa fa-arrow-circle-right"></i></a>
-											</div>
+							<?php if ($setting['server'] == 'lokal') : ?>
+								<div class="col-lg-8">
+									<div class="small-box ">
+										<div class="inner">
+											<img id='loading-image' src='<?= $homeurl ?>/dist/img/ajax-loader.gif' style='display:none; width:50px;' />
+											<p id='statusserver'></p>
+											<p>Status Server</p>
 										</div>
-										<script>
-											$.ajax({
-												type: 'POST',
-												url: 'statusserver.php',
-												beforeSend: function() {
-													$('#loading-image').show();
-												},
-												success: function(response) {
-													$('#statusserver').html(response);
-													$('#loading-image').hide();
+										<div class="icon">
+											<i class="fa fa-desktop"></i>
+										</div>
+										<a href="index.php?pg=sinkronset" class="small-box-footer">Selengkapnya <i class="fa fa-arrow-circle-right"></i></a>
+									</div>
+								</div>
+								<script>
+									$.ajax({
+										type: 'POST',
+										url: 'statusserver.php',
+										beforeSend: function() {
+											$('#loading-image').show();
+										},
+										success: function(response) {
+											$('#statusserver').html(response);
+											$('#loading-image').hide();
 
-												}
-											});
-										</script>
-									<?php endif; ?>
-									<div class="col-md-12">
-										<div class='box box-solid direct-chat direct-chat-warning'>
-											<div class='box-header with-border'>
-												<h3 class='box-title'><i class='fas fa-bullhorn fa-fw'></i>
-													Pengumuman
-												</h3>
-												<div class='box-tools pull-right'>
+										}
+									});
+								</script>
+							<?php endif; ?>
+							<div class="col-md-8">
+								<div class='box box-solid direct-chat direct-chat-warning'>
+									<div class='box-header with-border'>
+										<h3 class='box-title'><i class='fas fa-bullhorn fa-fw'></i>
+											Pengumuman
+										</h3>
+										<div class='box-tools pull-right'>
 
-													<a href='?pg=<?= $pg ?>&ac=clearpengumuman' class='btn btn-default' title='Bersihkan Pengumuman'><i class='fa fa-trash'></i></a>
-												</div>
-											</div>
-											<div class='box-body'>
-												<div id='pengumuman'>
-													<p class='text-center'>
-														<br /><i class='fa fa-spin fa-circle-o-notch'></i> Loading....
-													</p>
-												</div>
-											</div>
+											<a href='index.php?pg=<?= $pg ?>&ac=clearpengumuman' class='btn btn-default' title='Bersihkan Pengumuman'><i class='fa fa-trash'></i></a>
 										</div>
 									</div>
-
+									<div class='box-body'>
+										<div id='pengumuman'>
+											<p class='text-center'>
+												<br /><i class='fa fa-spin fa-circle-o-notch'></i> Loading....
+											</p>
+										</div>
+									</div>
 								</div>
 							</div>
-
-							<div class='animated flipInX col-md-4'>
+							<div class='col-md-4'>
 								<div class='box box-solid direct-chat direct-chat-warning'>
 									<div class='box-header with-border'>
 										<h3 class='box-title'><i class='fa fa-history'></i> Log Aktifitas</h3>
 										<div class='box-tools pull-right'>
-											<a href='?pg=<?= $pg ?>&ac=clearlog' class='btn btn-default' title='Bersihkan Log'><i class='fa fa-trash'></i></a>
+											<a href='index.php?pg=<?= $pg ?>&ac=clearlog' class='btn btn-default' title='Bersihkan Log'><i class='fa fa-trash'></i></a>
 										</div>
 									</div>
 									<div class='box-body'>
@@ -1021,7 +1004,7 @@ $ujian = mysqli_num_rows(mysqli_query($koneksi, "SELECT * FROM ujian where statu
 										<h3 class='box-title'> Tulis Pengumuman</h3>
 										<div class='box-tools pull-right'>
 											<button type='submit' name='simpanpengumuman' class='btn btn-sm btn-flat btn-success'><i class='fa fa-edit'></i> Simpan</button>
-											<a href='?pg=<?= $pg ?>' class='btn btn-sm bg-maroon'><i class='fa fa-times'></i></a>
+											<a href='index.php?pg=<?= $pg ?>' class='btn btn-sm bg-maroon'><i class='fa fa-times'></i></a>
 										</div>
 									</div><!-- /.box-header -->
 									<div class='box-body'>
@@ -1161,7 +1144,7 @@ $ujian = mysqli_num_rows(mysqli_query($koneksi, "SELECT * FROM ujian where statu
 								<div class='box-header with-border'>
 									<h3 class='box-title'>Manajemen Guru</h3>
 									<div class='box-tools pull-right '>
-										<a href='?pg=importguru' class='btn btn-sm btn-flat btn-success'><i class='fa fa-upload'></i> Import Guru</a>
+										<a href='index.php?pg=importguru' class='btn btn-sm btn-flat btn-success'><i class='fa fa-upload'></i> Import Guru</a>
 									</div>
 								</div><!-- /.box-header -->
 								<div class='box-body'>
@@ -1191,8 +1174,8 @@ $ujian = mysqli_num_rows(mysqli_query($koneksi, "SELECT * FROM ujian where statu
 														<td><?= $pengawas['level'] ?></td>
 														<td style="text-align:center">
 															<div class=''>
-																<a href="?pg=<?= $pg ?>&ac=edit&id=<?= $pengawas['id_pengawas'] ?>"> <button class='btn btn-flat btn-xs btn-warning'><i class='fa fa-edit'></i></button></a>
-																<a href="?pg=<?= $pg ?>&ac=hapus&id=<?= $pengawas['id_pengawas'] ?>"> <button class='btn btn-flat btn-xs bg-maroon'><i class='fa fa-trash'></i></button></a>
+																<a href="index.php?pg=<?= $pg ?>&ac=edit&id=<?= $pengawas['id_pengawas'] ?>"> <button class='btn btn-flat btn-xs btn-warning'><i class='fa fa-edit'></i></button></a>
+																<a href="index.php?pg=<?= $pg ?>&ac=hapus&id=<?= $pengawas['id_pengawas'] ?>"> <button class='btn btn-flat btn-xs bg-maroon'><i class='fa fa-trash'></i></button></a>
 															</div>
 														</td>
 													</tr>
@@ -1318,7 +1301,7 @@ $ujian = mysqli_num_rows(mysqli_query($koneksi, "SELECT * FROM ujian where statu
 											<h3 class='box-title'>Edit</h3>
 											<div class='box-tools pull-right '>
 												<button type='submit' name='submit' class='btn btn-sm btn-flat btn-success'><i class='fa fa-check'></i> Simpan</button>
-												<a href='?pg=<?= $pg ?>' class='btn btn-sm bg-maroon' title='Batal'><i class='fa fa-times'></i></a>
+												<a href='index.php?pg=<?= $pg ?>' class='btn btn-sm bg-maroon' title='Batal'><i class='fa fa-times'></i></a>
 											</div>
 										</div><!-- /.box-header -->
 										<div class='box-body'>
@@ -1383,7 +1366,7 @@ $ujian = mysqli_num_rows(mysqli_query($koneksi, "SELECT * FROM ujian where statu
 											<h3 class='box-title'>Hapus</h3>
 											<div class='box-tools pull-right '>
 												<button type='submit' name='submit' class='btn btn-sm bg-maroon'><i class='fa fa-trash'></i> Hapus</button>
-												<a href='?pg=<?= $pg ?>' class='btn btn-sm btn-default' title='Batal'><i class='fa fa-times'></i></a>
+												<a href='index.php?pg=<?= $pg ?>' class='btn btn-sm btn-default' title='Batal'><i class='fa fa-times'></i></a>
 											</div>
 										</div><!-- /.box-header -->
 										<div class='box-body'>
@@ -1557,7 +1540,7 @@ $ujian = mysqli_num_rows(mysqli_query($koneksi, "SELECT * FROM ujian where statu
 										<h3 class='box-title'>Kartu Peserta Ujian</h3>
 										<div class='box-tools pull-right '>
 											<button class='btn btn-sm btn-flat btn-success' onclick="frames['frameresult'].print()"><i class='fa fa-print'></i> Print</button>
-											<a href='?pg=siswa' class='btn btn-sm bg-maroon' title='Batal'><i class='fa fa-times'></i></a>
+											<a href='index.php?pg=siswa' class='btn btn-sm bg-maroon' title='Batal'><i class='fa fa-times'></i></a>
 										</div>
 									</div><!-- /.box-header -->
 									<div class='box-body'>
@@ -1721,7 +1704,7 @@ $ujian = mysqli_num_rows(mysqli_query($koneksi, "SELECT * FROM ujian where statu
 						<div class='box-header with-border'>
 							<h3 class='box-title'>Upload Foto Peserta Ujian</h3>
 							<div class='box-tools pull-right '>
-								<a href='?pg=siswa' class='btn btn-sm bg-maroon' title='Batal'><i class='fa fa-times'></i></a>
+								<a href='index.php?pg=siswa' class='btn btn-sm bg-maroon' title='Batal'><i class='fa fa-times'></i></a>
 							</div>
 						</div><!-- /.box-header -->
 						<div class='box-body'>
@@ -1859,7 +1842,7 @@ $ujian = mysqli_num_rows(mysqli_query($koneksi, "SELECT * FROM ujian where statu
 									<h3 class='box-title'>Import Data Master</h3>
 									<div class='box-tools pull-right '>
 										<a href='<?= $format ?>' class='btn btn-sm btn-flat btn-success'><i class='fa fa-file-excel-o'></i> Download Format</a>
-										<a href='?pg=siswa' class='btn btn-sm btn-flat btn-success' title='Batal'><i class='fa fa-times'></i></a>
+										<a href='index.php?pg=siswa' class='btn btn-sm btn-flat btn-success' title='Batal'><i class='fa fa-times'></i></a>
 									</div>
 								</div><!-- /.box-header -->
 								<div class='box-body'>
@@ -1977,7 +1960,7 @@ $ujian = mysqli_num_rows(mysqli_query($koneksi, "SELECT * FROM ujian where statu
 										<h3 class='box-title'>Import Guru</h3>
 										<div class='box-tools pull-right '>
 											<button type='submit' name='submit' class='btn btn-sm btn-flat btn-success'><i class='fa fa-check'></i> Import</button>
-											<a href='?pg=guru' class='btn btn-sm btn-default' title='Batal'><i class='fa fa-times'></i></a>
+											<a href='index.php?pg=guru' class='btn btn-sm btn-default' title='Batal'><i class='fa fa-times'></i></a>
 										</div>
 									</div><!-- /.box-header -->
 									<div class='box-body'>
@@ -2103,8 +2086,8 @@ $ujian = mysqli_num_rows(mysqli_query($koneksi, "SELECT * FROM ujian where statu
 														<td><?= $pengawas['ruang'] ?></td>
 														<td style="text-align:center">
 															<div class=''>
-																<a href="?pg=<?= $pg ?>&ac=edit&id=<?= $pengawas['id_pengawas'] ?>"> <button class='btn btn-flat btn-xs btn-warning'><i class='fa fa-edit'></i></button></a>
-																<a href="?pg=<?= $pg ?>&ac=hapus&id=<?= $pengawas['id_pengawas'] ?>"> <button class='btn btn-flat btn-xs bg-maroon'><i class='fa fa-trash'></i></button></a>
+																<a href="index.php?pg=<?= $pg ?>&ac=edit&id=<?= $pengawas['id_pengawas'] ?>"> <button class='btn btn-flat btn-xs btn-warning'><i class='fa fa-edit'></i></button></a>
+																<a href="index.php?pg=<?= $pg ?>&ac=hapus&id=<?= $pengawas['id_pengawas'] ?>"> <button class='btn btn-flat btn-xs bg-maroon'><i class='fa fa-trash'></i></button></a>
 															</div>
 														</td>
 													</tr>
@@ -2213,7 +2196,7 @@ $ujian = mysqli_num_rows(mysqli_query($koneksi, "SELECT * FROM ujian where statu
 											<h3 class='box-title'>Edit</h3>
 											<div class='box-tools pull-right '>
 												<button type='submit' name='submit' class='btn btn-sm btn-flat btn-success'><i class='fa fa-check'></i> Simpan</button>
-												<a href='?pg=<?= $pg ?>' class='btn btn-sm bg-maroon' title='Batal'><i class='fa fa-times'></i></a>
+												<a href='index.php?pg=<?= $pg ?>' class='btn btn-sm bg-maroon' title='Batal'><i class='fa fa-times'></i></a>
 											</div>
 										</div><!-- /.box-header -->
 										<div class='box-body'>
@@ -2264,7 +2247,7 @@ $ujian = mysqli_num_rows(mysqli_query($koneksi, "SELECT * FROM ujian where statu
 											<h3 class='box-title'>Hapus</h3>
 											<div class='box-tools pull-right '>
 												<button type='submit' name='submit' class='btn btn-sm bg-maroon'><i class='fa fa-trash'></i> Hapus</button>
-												<a href='?pg=<?= $pg ?>' class='btn btn-sm btn-default' title='Batal'><i class='fa fa-times'></i></a>
+												<a href='index.php?pg=<?= $pg ?>' class='btn btn-sm btn-default' title='Batal'><i class='fa fa-times'></i></a>
 											</div>
 										</div><!-- /.box-header -->
 										<div class='box-body'>
@@ -2310,8 +2293,8 @@ $ujian = mysqli_num_rows(mysqli_query($koneksi, "SELECT * FROM ujian where statu
 														<td><?= $pengawas['ruang'] ?></td>
 														<td style="text-align:center">
 															<div class=''>
-																<a href="?pg=<?= $pg ?>&ac=edit&id=<?= $pengawas['id_pengawas'] ?>"> <button class='btn btn-flat btn-xs btn-warning'><i class='fa fa-edit'></i></button></a>
-																<a href="?pg=<?= $pg ?>&ac=hapus&id=<?= $pengawas['id_pengawas'] ?>"> <button class='btn btn-flat btn-xs bg-maroon'><i class='fa fa-trash'></i></button></a>
+																<a href="index.php?pg=<?= $pg ?>&ac=edit&id=<?= $pengawas['id_pengawas'] ?>"> <button class='btn btn-flat btn-xs btn-warning'><i class='fa fa-edit'></i></button></a>
+																<a href="index.php?pg=<?= $pg ?>&ac=hapus&id=<?= $pengawas['id_pengawas'] ?>"> <button class='btn btn-flat btn-xs bg-maroon'><i class='fa fa-trash'></i></button></a>
 															</div>
 														</td>
 													</tr>
@@ -2420,7 +2403,7 @@ $ujian = mysqli_num_rows(mysqli_query($koneksi, "SELECT * FROM ujian where statu
 											<h3 class='box-title'>Edit</h3>
 											<div class='box-tools pull-right '>
 												<button type='submit' name='submit' class='btn btn-sm btn-flat btn-success'><i class='fa fa-check'></i> Simpan</button>
-												<a href='?pg=<?= $pg ?>' class='btn btn-sm bg-maroon' title='Batal'><i class='fa fa-times'></i></a>
+												<a href='index.php?pg=<?= $pg ?>' class='btn btn-sm bg-maroon' title='Batal'><i class='fa fa-times'></i></a>
 											</div>
 										</div><!-- /.box-header -->
 										<div class='box-body'>
@@ -2471,7 +2454,7 @@ $ujian = mysqli_num_rows(mysqli_query($koneksi, "SELECT * FROM ujian where statu
 											<h3 class='box-title'>Hapus</h3>
 											<div class='box-tools pull-right '>
 												<button type='submit' name='submit' class='btn btn-sm bg-maroon'><i class='fa fa-trash'></i> Hapus</button>
-												<a href='?pg=<?= $pg ?>' class='btn btn-sm btn-default' title='Batal'><i class='fa fa-times'></i></a>
+												<a href='index.php?pg=<?= $pg ?>' class='btn btn-sm btn-default' title='Batal'><i class='fa fa-times'></i></a>
 											</div>
 										</div><!-- /.box-header -->
 										<div class='box-body'>
@@ -2515,8 +2498,8 @@ $ujian = mysqli_num_rows(mysqli_query($koneksi, "SELECT * FROM ujian where statu
 														<td><?= $pengawas['level'] ?></td>
 														<td style="text-align:center">
 															<div class=''>
-																<a href="?pg=<?= $pg ?>&ac=edit&id=<?= $pengawas['id_pengawas'] ?>"> <button class='btn btn-flat btn-xs btn-warning'><i class='fa fa-edit'></i></button></a>
-																<a href="?pg=<?= $pg ?>&ac=hapus&id=<?= $pengawas['id_pengawas'] ?>"> <button class='btn btn-flat btn-xs bg-maroon'><i class='fa fa-trash'></i></button></a>
+																<a href="index.php?pg=<?= $pg ?>&ac=edit&id=<?= $pengawas['id_pengawas'] ?>"> <button class='btn btn-flat btn-xs btn-warning'><i class='fa fa-edit'></i></button></a>
+																<a href="index.php?pg=<?= $pg ?>&ac=hapus&id=<?= $pengawas['id_pengawas'] ?>"> <button class='btn btn-flat btn-xs bg-maroon'><i class='fa fa-trash'></i></button></a>
 															</div>
 														</td>
 													</tr>
@@ -2620,7 +2603,7 @@ $ujian = mysqli_num_rows(mysqli_query($koneksi, "SELECT * FROM ujian where statu
 											<h3 class='box-title'>Edit</h3>
 											<div class='box-tools pull-right '>
 												<button type='submit' name='submit' class='btn btn-sm btn-flat btn-success'><i class='fa fa-check'></i> Simpan</button>
-												<a href='?pg=<?= $pg ?>' class='btn btn-sm bg-maroon' title='Batal'><i class='fa fa-times'></i></a>
+												<a href='index.php?pg=<?= $pg ?>' class='btn btn-sm bg-maroon' title='Batal'><i class='fa fa-times'></i></a>
 											</div>
 										</div><!-- /.box-header -->
 										<div class='box-body'>
@@ -2667,7 +2650,7 @@ $ujian = mysqli_num_rows(mysqli_query($koneksi, "SELECT * FROM ujian where statu
 											<h3 class='box-title'>Hapus</h3>
 											<div class='box-tools pull-right '>
 												<button type='submit' name='submit' class='btn btn-sm bg-maroon'><i class='fa fa-trash'></i> Hapus</button>
-												<a href='?pg=<?= $pg ?>' class='btn btn-sm btn-default' title='Batal'><i class='fa fa-times'></i></a>
+												<a href='index.php?pg=<?= $pg ?>' class='btn btn-sm btn-default' title='Batal'><i class='fa fa-times'></i></a>
 											</div>
 										</div><!-- /.box-header -->
 										<div class='box-body'>
@@ -3507,7 +3490,7 @@ $ujian = mysqli_num_rows(mysqli_query($koneksi, "SELECT * FROM ujian where statu
 	<script src='<?= $homeurl ?>/plugins/summernote/summernote.min.js'></script>
 	<script src='<?= $homeurl ?>/plugins/fastclick/fastclick.js'></script>
 	<script src='<?= $homeurl ?>/dist/js/adminlte.min.js'></script>
-	<script src='<?= $homeurl ?>/dist/js/app.min.js'></script>
+	<script src='<?= $homeurl ?>/dist/js/app.js'></script>
 	<script src='<?= $homeurl ?>/plugins/datetimepicker/build/jquery.datetimepicker.full.min.js'></script>
 	<script src='<?= $homeurl ?>/plugins/slimScroll/jquery.slimscroll.min.js'></script>
 	<script src='<?= $homeurl ?>/plugins/iCheck/icheck.min.js'></script>

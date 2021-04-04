@@ -23,6 +23,7 @@ Fitur OnyetCBT:
 - PHP Imagick
 - Jitsi Server: Optional
 - MariaDB Version : 10.x
+- Mod Rewrite
 
 ## 🎭 Admin Login
 

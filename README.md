@@ -82,6 +82,9 @@ Jika anda mendapati bahwa aplikasi ini memeiliki kerentanan keamanan atau ada fu
 ## 👑 Donasi
 
 Silahkan cek halaman github kami [disini.](https://github.com/onyet)
+Atau langsung ke rekening berikut :
+
+[x] Bank BCA : 0461-869636 A/n Dian Mukti Wibowo
 
 ## 🎁 Kontribusi
 

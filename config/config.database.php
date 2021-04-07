@@ -3,7 +3,7 @@
 $host = 'localhost';
 $user = 'root';
 $pass = '';
-$debe = 'db_ocbt';
+$debe = 'ocbt';
 $port = '3306';
 
 

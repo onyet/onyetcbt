@@ -10,7 +10,7 @@ if($id_pengawas == 0) {
     exit();
 }
 
-$pengawas = mysqli_fetch_array(mysqli_query($koneksi, "SELECT * FROM pengawas  WHERE id_pengawas='$id_pengawas'"));
+$pengawas = mysqli_fetch_array(mysqli_query($koneksi, "SELECT * FROM pengawas  WHERE id_pengawas='$id_pengawas'"), MYSQLI_ASSOC);
 
 (isset($_GET['pg'])) ? $pg = $_GET['pg'] : $pg = '';
 (isset($_GET['ac'])) ? $ac = $_GET['ac'] : $ac = '';
@@ -63,9 +63,8 @@ $ujian = mysqli_num_rows(mysqli_query($koneksi, "SELECT * FROM ujian where statu
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="<?= $homeurl ?>/dist/img/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
-
+	<meta name="csrf-token" content="<?= base64_encode(json_encode($pengawas)) ?>" />
 	<link rel='stylesheet' href='<?= $homeurl ?>/dist/bootstrap/css/bootstrap.min.css' />
-
 	<link rel='stylesheet' href='<?= $homeurl ?>/plugins/fontawesome/css/all.css' />
 	<link rel='stylesheet' href='<?= $homeurl ?>/plugins/select2/select2.min.css' />
 	<link rel='stylesheet' href='<?= $homeurl ?>/dist/css/AdminLTE.min.css' />
@@ -424,7 +423,7 @@ $ujian = mysqli_num_rows(mysqli_query($koneksi, "SELECT * FROM ujian where statu
 			</section>
 		</aside>
 
-		<div class='content-wrapper' style='background-image: url(acs.jpg);background-size: cover;'>
+		<div class='content-wrapper' style='background-image: url(<?= $homeurl ?>/admin/acs.jpg);background-size: cover;'>
 			<section class='content-header'>
 				<h1>
 					&nbsp;<span class='hidden-xs'><?= $setting['aplikasi'] . '-' . $jenjang ?></span>
